@@ -1,0 +1,57 @@
+{% extends 'user/useraccount.html'%}
+
+{% block table%}
+
+{% set msg = get_flashed_messages()%}
+{% if msg %}
+<p class="alert alert-info">{{msg[0]}}</p>
+{% endif %}
+<form action="/user/profile/update" method="post">
+  {% for i in log2 %}
+    <div class="mb-3">
+        {{ur.firstname.label}}
+        {{ur.firstname(class_="form-control", value=i.firstname )}}
+    </div>
+    <div class="mb-3">
+        {{ur.lastname.label}}
+        {{ur.lastname(class_="form-control", value=i.lastname)}}
+    </div>
+    <div class="mb-3">
+        {{ur.email_addy.label}}
+        {{ur.email_addy(class_="form-control", value=i.email)}}
+    </div>
+    <div class="mb-3">
+        <label for="address">Address</label>
+    </div>
+    <div class="mb-3">
+        <textarea name="address" id="address" cols="30" rows="10" class="form-control">{{i.address}}</textarea>
+    </div>
+    <div class="mb-3">
+        {{ur.phone.label}}
+        {{ur.phone(class_="form-control", value= i.phone )}}
+    </div>
+        {{ur.csrf_token()}}
+    <div class="mb-3">
+        <select name="state" id="state" class="form-select">
+            <option value="{{i.stateid}}">--{{i.userstateview.state_name}}--</option>
+            {%for j in state %}
+            <option value="{{j.stateid}}"> {{j.state_name}} </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        {{ur.submit(class_="form-control btn btn-success")}}
+    </div>
+  {% endfor %}
+</form>
+{%endblock%}
+
+{% block custom_script %}
+
+{% endblock %}
+
+
+
+
+   
+    

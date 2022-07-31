@@ -1,0 +1,221 @@
+<!Doctype html>
+<html lang="en">
+	<head>
+		<title>Haadu | Admin dashboard </title>
+		<meta charset = "UTF-8">
+		<meta name = "viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit = no">
+		<link href = "{{url_for('static',filename='css/bootstrap.css')}}" rel = "stylesheet" type = "text/css">
+		<link href = "{{url_for('static',filename='fontawesome/css/all.css')}}" rel = "stylesheet" type = "text/css">
+		<link href = "{{url_for('static',filename='stylesheet.css')}}" rel = "stylesheet" type = "text/css">
+
+	</head>
+	<body>
+		<div class="container-fluid bg-light">
+
+			<!-- 1st Nav -->
+
+			<div id = "first-nav" class="row">
+				<div class="col"><nav class="navbar navbar-expand-lg navbar-light bg-white">
+				  <div class="container-fluid">
+				    <a class="navbar-brand" href="#"><img src="{{url_for('static',filename='imagepage1/haadu2.png')}}" alt="logo" class="" height="50"><span class="visually-hidden">Navbar</span></a>
+				    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				      <span class="navbar-toggler-icon"></span>
+				    </button>
+
+				    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+						{% for i in deets%}
+						<p class="d-inline-block text-success ms-5 mt-3">Welcome, {{i.adminname}}</p>
+						{% endfor %}
+				      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+				      	<li class="nav-item">
+				        	<a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+				        		<i class="fa-solid fa-eye orange"></i>
+ 								View Profile 
+ 							</a>
+				        </li>
+				        <li class="nav-item">
+				        	<a class="nav-link active" aria-current="page" href="{{url_for('shop')}}">
+				        		<i class="fa-solid fa-shop"></i>
+				          		Go to shop
+				      		</a>
+				        </li>
+				        <li class="nav-item">
+				        	<a class="nav-link active" aria-current="page" href="/admin/register">
+				        		<i class="fa-solid fa-user"></i>
+				        		Add Admin
+				        	</a>
+				        </li>  
+                        <li class="nav-item">
+				        	<a class="nav-link active" aria-current="page" href="/admin/logout">
+				        		<i class="fa-solid fa-right-from-bracket"></i>
+				        		Logout
+				        	</a>
+				        </li>  
+				      </ul>
+				    	<i class="fa-brands fa-facebook orange d-inline-block mx-3"></i>
+						<i class="fa-brands fa-twitter orange d-inline-block mx-3"></i>
+						<i class="fa-brands fa-instagram orange d-inline-block mx-3"></i>
+						<i class="fa-brands fa-google-plus-g orange d-inline-block mx-3"></i>  
+				    </div>
+				  </div>
+				</nav>
+				</div>	
+			</div>
+
+			<!-- dashboard -->
+			<div class="row px-5">
+				<div>
+					<p class="lead text-success"><a href="/admin/dashboard">Admin Dashboard</a></p>
+				</div>
+				<div class="col-12 d-md-flex justify-content-around border py-3 bg-white">
+					<div class="col-12 col-md-2 p-3 mb-3 rounded text-center ">
+						<p class="lead text-success">Total Vendors</p>
+						<h6 class="display-4 text-center text-success">{{vend}}</h6>
+						<a href="/admin/vendors" class="btn btn-success d-inline-block"> <i class="fa-solid fa-eye text-success"></i> View vendors</a>	
+					</div>
+					<div class="col-12 col-md-2 p-3 mb-3 rounded text-center ">
+						<p class="lead text-success">Total Customers</p>
+						<h6 class="display-4 text-center text-success">{{cust}}</h6>
+						<a href="/admin/customers" class="btn btn-success d-inline-block"> <i class="fa-solid fa-eye text-success"></i> View customers</a>	
+					</div>
+					<div class="col-12 col-md-2 p-3 mb-3 rounded text-center ">
+						<p class="lead text-success">Total Products</p>
+						<h6 class="display-4 text-center text-success">{{prod}}</h6>
+						<a href="/admin/products" class="btn btn-success d-inline-block"><i class="fa-solid fa-eye text-success"></i> View products</a>	
+					</div>
+					<div class="col-12 col-md-2 p-3 mb-3 rounded text-center ">
+						<p class="lead text-success">Total Orders</p>
+						<h6 class="display-4 text-center text-success">{{orde}}</h6>
+						<a href="/admin/orders" class="btn btn-success d-inline-block"><i class="fa-solid fa-eye text-success"></i> View Orders</a>	
+					</div>
+				</div>	
+			</div>
+
+			<div class="row px-5">
+				<div class="col pt-5 border mt-3 bg-white">
+					<!-- <div>
+						<h4 class="display-4 text-success">Results</h4>
+						<a href="#">Show all</a>
+					</div> -->
+
+					<div class="col">
+						<table class="table table-hover table-responsive">
+							{% block table%}
+							  
+							  {%endblock%}
+							</table>
+						</div>
+					</div>
+										
+			</div>
+		
+
+
+			<!-- Footer -->
+
+			<div class="row bgfooter">
+				<!-- footer col -->
+				<div class="col d-md-flex my-5">
+
+					<!-- footer col 2 -->
+
+					<div class="col">
+						<div class="col"><img src="{{url_for('static',filename='imagepage1/haadu2.png')}}" alt = "Logo" class="img-fluid"></div>
+					</div>
+
+					<!-- footer col 2 -->
+					<div class="col d-flex">
+						<div class="col">
+							<h6 class="mb-3 text-white">Support</h6>
+							<a href="#" class="d-block orange mb-2">Contact Us</a>
+							<a href="#" class="d-block orange mb-2">FAQs</a>
+							<a href="#" class="d-block orange mb-2">Shipping & Returns</a>
+
+						</div>
+						<div class="col">
+							<h6 class="mb-3 text-white">Shop</h6>
+							<a href="#" class="d-block orange mb-2">Foods and Vegetables</a>
+							<a href="#" class="d-block orange mb-2">Live Stock</a>
+							<a href="#" class="d-block orange mb-2">Farming Tools</a>
+						</div>
+					</div>
+
+					<!-- footer col 3 -->
+
+					<div class="col d-flex">
+						<div class="col">
+							<h6 class="mb-3 text-white">Company</h6>
+							<a href="#" class="d-block orange mb-2">About us</a>
+							<a href="#" class="d-block orange mb-2">Careers</a>
+							<a href="#" class="d-block orange mb-2">Terms and Conditions</a>
+							<a href="#" class="d-block orange mb-2">Privacy and Cookies policy</a>
+						</div>
+						<div class="col">
+							<h6 class="mb-3 text-white">Contact</h6>
+							<a href="#" class="d-block orange mb-2">+1 234 5677</a>
+							<a href="#" class="d-block orange mb-2">+1 234 5667</a>
+							<a href="#" class="d-block orange mb-2">help@haadu.com</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- all rights reserved -->
+
+			<div class="row">
+				<div class="col bg-secondary p-3">
+					<p class="text-center text-white">Designed by Omogbare Ekpenga &copy; 2022</p>
+				</div>
+			</div>
+
+			
+
+						
+			    </div>
+			  </div>
+			</div>
+			<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+			  <div class="offcanvas-header">
+			    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Admin Profile</h5>
+			    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			  </div>
+			  <div class="offcanvas-body">
+			  	<div>
+						<div class="card col-12">
+						  <div class="card-header bg-success pt-5">
+							{% for i in deets%}
+						   <i class="fa-solid fa-user d-inline-block white me-1"></i> <span class="text-white d-inline-block ">{{i.adminname}}</span>
+						   {% endfor %}
+						  </div>
+						  <ul class="list-group list-group-flush">
+						    <li class="list-group-item"><i class="fa-solid fa-pen d-inline-block orange me-1"></i><a href="/admin/category" class="d-inline-block">Update Categories</a></li>
+						    <li class="list-group-item"><i class="fa-solid fa-file-invoice d-inline-block orange me-1"></i><a href="#offcanvasupdate" class="d-inline-block">Order history</a></li>
+						    <li class="list-group-item"><i class="fa-solid fa-file-invoice-dollar orange me-1"></i><a href="#offcanvasupdate" class="d-inline-block">Transaction history</a></li>
+						    <li class="list-group-item"><i class="fa-solid fa-credit-card orange me-1"></i><a href="#offcanvasupdate" class="d-inline-block">Payment Methods</a></li>
+						    <li class="list-group-item"><i class="fa-solid fa-bell d-inline-block me-1 orange"> </i><a href="#offcanvasupdate"><span class="d-inline-block">Pending Orders</a></li>
+						    <li class="list-group-item"><i class="fa-solid fa-key orange"></i><a href="#offcanvasupdate" class="d-inline-block">Change password</a></li>	
+						    <li class="list-group-item"><i class="fa-solid fa-gear d-inline-block orange me-1"></i><a href="#" class="d-inline-block">Settings</a></li>
+						  </ul>
+
+					
+						  <div class="card-footer bgorange">
+						    <i class="fa-solid fa-right-from-bracket d-inline-block me-1 white"></i><a href="/admin/logout" class="d-inline-block text-white">Log out</a>
+						  </div>
+						</div>
+					</div>  
+			   
+			  </div>
+			</div>
+		</div>
+		<!-- JS Files *best practice is to add your files yourself. For the CDN route, you'll be required to have internet connection. The popper js is in the bundle.js file.*-->
+
+		<script type="text/javascript" src="jquery.3.6.0.js"></script>
+		<script type="text/javascript" src="jquery.3.6.0.min.js"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/bootstrap.bundle.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='script.js')}}"></script>
+		<script type="text/javascript" language="javascript">
+			
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'admin/admintemplate.html'%}
+
+{% block table %}
+
+<thead>
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">Fullname</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col">State</th>
+      <th scope="col">Reg date</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in cust2 %}
+    <tr>
+      <td>{{loop.index}}</td>
+      <td>{{i.firstname}} {{i.lastname}}</td>
+      <td>{{i.email}}</td>
+      <td>{{i.address}}</td>
+      <td>{{i.state}}</td>
+      <td>{{i.datereg.strftime('%d %B %Y')}} {{i.datereg.strftime('%I:%M%p')}}</td>
+      <td>
+          <a href="/delete/customer/{{i.userid}}" class="btn btn-danger d-inline-block" onclick="return confirm('Do you really want to delete this item?')"><i class="fa-solid fa-trash-can"></i> Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+{% endblock %}

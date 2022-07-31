@@ -1,0 +1,430 @@
+<!Doctype html>
+<html lang="en">
+	<head>
+		<title>Haadu | Home</title>
+		<meta charset = "UTF-8">
+		<meta name = "viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit = no">
+		<link href = "{{url_for('static',filename='css/bootstrap.css')}}" rel = "stylesheet" type = "text/css">
+		<link href = "{{url_for('static',filename='fontawesome/css/all.css')}}" rel = "stylesheet" type = "text/css">
+		<link href = "{{url_for('static',filename='stylesheet.css')}}" rel = "stylesheet" type = "text/css">
+
+	</head>
+	<body>
+		<div class="container-fluid">
+
+			{% include 'products/navbar.html'%}
+
+			<!-- First quick shop section -->
+
+			<div class="row mb-3">
+				<div class="col vh70 d-flex align-items-center justify-content-center" id="banner">
+					
+					<input type="input" name="search" id="search" placeholder="Search marketplace" class="d-block">
+					<a href="{{url_for('shop')}}" class="btn bg-white p-2" id="btn_search"><img src="{{url_for('static',filename='imagepage1/search.png')}}" alt="search button"></a>
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<div class="col vh20 d-flex align-items-center justify-content-center">
+
+					<h2 class="orange">World class agro ecommerce hub.
+					We are not just a store, we are a network!
+				</h2>
+				
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<div class="col-6 col-md-2 vh30">
+					<a href="{{url_for('shop')}}"><img src="{{url_for('static',filename='imagepage1/bird.jpg')}}" alt="birds" class="img-fluid"></a>
+					
+				</div>
+				<div class="col-6 col-md-2">
+					<a href="{{url_for('shop')}}"><img src="{{url_for('static',filename='imagepage1/beef.jpg')}}" alt="beef" class="img-fluid"></a>
+					
+				</div>
+				<div class="col-6 col-md-2">
+					<a href="{{url_for('shop')}}"><img src="{{url_for('static',filename='imagepage1/sheep.jpg')}}" alt="sheep" class="img-fluid"></a>
+				</div>
+				<div class="col-6 col-md-2">
+					<a href="{{url_for('shop')}}"><img src="{{url_for('static',filename='imagepage1/chicks.jpg')}}" alt="birds" class="img-fluid"></a>
+					
+				</div>
+				<div class="col-6 col-md-2">
+					<a href="{{url_for('shop')}}"><img src="{{url_for('static',filename='imagepage1/garri.jpg')}}" alt="Garri" class="img-fluid"></a>
+					
+				</div>
+				<div class="col-6 col-md-2">
+					<a href="{{url_for('shop')}}"><img src="{{url_for('static',filename='imagepage1/tomatoes.jpg')}}" alt="birds" class="img-fluid"></a>
+				</div>
+			</div>
+
+			<!-- Categories -->
+			<div class="row mb-3">
+
+					<!-- Col for first quick shop section  -->
+
+					<!-- For livestock -->
+					<div id = 'livestock' class="col-md-4 vh50 move d-flex justify-content-center align-items-center">
+						<div>
+							<h1 class="cntr25 text-white bg-success d-inline-block">Live Stock</h1>
+							<a href ="{{url_for('shop')}}" class="btn btn-lg d-inline-block left25  newbutton">Shop Live Stock <i class="fa-solid fa-arrow-right d-inline-block"></i> </a>
+						</div>
+					</div>
+
+					<!-- For foodstuff -->
+
+					<div id = 'foodstuff' class="col-md-4 vh70 move d-flex justify-content-center align-items-center">
+						<div>
+							<h1 class="cntr25 text-white text-center left15 bg-success d-inline-block">Food & Vegetables</h1>
+							<a href ="{{url_for('shop')}}" class="btn btn-lg d-inline-block left15 newbutton">Shop Food & vegetables <i class="fa-solid fa-arrow-right d-inline-block"></i> </a>
+						</div>
+					</div>
+
+					<!-- For Farming Equipments -->
+
+					<div id = 'farming' class="col-md-4 vh70 move d-flex justify-content-center align-items-center">
+						<div class="">
+							<h1 class="cntr25 text-white bg-success d-inline-block">Farming Aid</h1> 
+							<a href="{{url_for('shop')}}" class="btn btn-lg d-inline-block left25 newbutton">Shop Equipments <i class="fa-solid fa-arrow-right d-inline-block"></i> 
+							</a>
+						</div>
+					</div>
+			</div>
+
+			<!-- Row For the services we offer -->
+
+			<div class = "row px-5">
+				<!-- col For the services we offer -->
+
+					<!-- shipping available -->					
+				<div class=" col-6 col-lg-3 d-flex p-3">
+					<div class="mx-2">
+						<i class="fa-solid fa-truck ilarge"></i>
+					</div>
+					<div>
+						<span>SHIPPING AVAILABLE</span>
+						<p>Base fee of &#x20A6;500 within Lagos and Abuja</p>
+					</div>
+				</div>
+
+					<!-- Free returns -->
+
+				<div class="col-lg-3 d-flex p-3">
+					<div class="mx-2">
+						<i class="fa-solid fa-arrow-right-arrow-left ilarge"></i>
+					</div>
+					<div>
+						<span>FREE RETURN</span>
+						<p>Terms & conditions is valid for 5 business days after delivery</p>
+					</div>
+				</div>
+
+					<!-- Secure shopping -->
+
+				<div class="col-lg-3 d-flex p-3">
+					<div class="mx-2">
+						<i class="fa-solid fa-lock ilarge"></i>
+					</div>
+					<div>
+						<span>WE ARE SECURE</span>
+						<p>With international standard security protocols, you're in safe hands</p>
+					</div>
+				</div>
+
+				<!-- Over 10,000 products -->
+
+				<div class="col-lg-3 d-flex p-3">
+					<div class="mx-2">
+						<i class="fa-solid fa-tag ilarge"></i>
+					</div>
+					<div>
+						<span>OVER 10,000 PRODUCTS</span>
+						<p>Discover an easy way to shop for your goods online</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col p-5">
+					<h6 class="text-center orange">Join our ever growing community</h4>
+					<h4 class="text-center text-success">The smartest way to shop, meet vendors and customers</h4>
+				</div>
+			</div>
+
+			<!-- The row for coming as a vendor or buyer -->
+
+			<div class="row">
+				<!-- The col for coming as a buyer or a vendor -->
+				<div class="col d-md-flex justify-content-center">
+					<!-- col for vendor -->
+					<div id = 'vendor' class="col-md-4 d-flex justify-content-center align-items-center vh70">
+						
+						<a href ="#" class="d-inline-block btn newbutton">Register as a Vendor
+						</a>
+					</div>
+
+					<!-- col for buyer -->
+					<div id = 'buyer' class="col-md-4 d-flex justify-content-center align-items-center vh70 ">
+						<a href ="#"  class="d-inline-block btn btn-success">Register as a buyer
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Top sellers of the month -->
+
+			<div class="row">
+				<div class="col p-5">
+					<h3 class="text-center orange">Best sellers for this month</h3>
+				</div>
+			</div>
+
+			<!-- row for Top sellers of the month -->
+					<div class="row px-5">
+					
+					<!-- first item -->
+					
+						<div class="col-6 col-md-4 col-lg-2" >
+							<img src="{{url_for('static',filename='imagepage1/beef.jpg')}}" class="card-img-top" alt="Picture of meat">
+							<div class="card-body">
+							    <div class="col text-center">
+									<span class = "orange d-block">ANIMAL PRODUCE</span>
+									<span class="d-block">Beef</span>
+									<span class="d-block text-success h6">&#x20A6;800 per KG</span>
+									<a href="{{url_for('shop')}}" class="btn text-white bgorange mt-3 form-control">Shop</a>
+								</div>   
+							</div>
+						</div>
+						
+
+						<!-- second item -->
+						
+						<div class="col-6 col-md-4 col-lg-2" >
+							<img src="{{url_for('static',filename='imagepage1/shovel.jpg')}}" class="card-img-top img-fluid" alt="Picture of garden shovel">
+							<div class="card-body">
+							    <div class="col text-center">
+									<span class = "orange d-block">FARMING TOOLS</span>
+									<span class="d-block">Garden shovel</span>
+									<span class="d-block text-success h6">&#x20A6;2,500</span>
+									<a href="{{url_for('shop')}}" class="btn text-white bgorange mt-3 form-control">Shop</a>
+								</div>
+							    
+							</div>
+						</div>
+						
+						<div class="col-6 col-md-4 col-lg-2" >
+							<img src="{{url_for('static',filename='imagepage1/rice.jpg')}}" class="card-img-top img-fluid" alt="Picture of garden shovel">
+							<div class="card-body">
+							    <div class="col text-center">
+									<span class = "orange d-block">GRAINS</span>
+									<span class="d-block">White rice</span>
+									<span class="d-block text-success h6">&#x20A6;1,500 per KG</span>
+									<a href="{{url_for('shop')}}" class="btn text-white bgorange mt-3 form-control">Shop</a>
+								</div>
+							    
+							</div>
+						</div>
+
+						<div class="col-6 col-md-4 col-lg-2" >
+							<img src="{{url_for('static',filename='imagepage1/shovel.jpg')}}" class="card-img-top img-fluid" alt="Picture of garden shovel">
+							<div class="card-body">
+							    <div class="col text-center">
+									<span class = "orange d-block">FARMING TOOLS</span>
+									<span class="d-block">Garden shovel</span>
+									<span class="d-block text-success h6">&#x20A6;2,500</span>
+									<a href="{{url_for('shop')}}" class="btn text-white bgorange mt-3 form-control">Shop</a>
+								</div>
+							    
+							</div>
+						</div>
+
+						<div class="col-6 col-md-4 col-lg-2">
+							<img src="{{url_for('static',filename='imagepage1/shovel.jpg')}}" class="card-img-top img-fluid" alt="Picture of garden shovel">
+							<div class="card-body">
+							    <div class="col text-center">
+									<span class = "orange d-block">FARMING TOOLS</span>
+									<span class="d-block">Garden shovel</span>
+									<span class="d-block text-success h6">&#x20A6;2,500</span>
+									<a href="{{url_for('shop')}}" class="btn text-white bgorange mt-3 form-control">Shop</a>
+								</div>
+							    
+							</div>
+						</div>
+
+						<!-- fourth item -->
+						
+						<div class="col-6 col-md-4 col-lg-2">
+							<img src="{{url_for('static',filename='imagepage1/sheep.jpg')}}" class="card-img-top img-fluid" alt="Picture of sheep">
+							<div class="card-body">
+							    <div class="col text-center">
+									<span class = "orange d-block">LIVE STOCK</span>
+									<span class="d-block">Adult Ewe 25kg</span>
+									<span class="d-block text-success h6">&#x20A6;25,000</span>
+									<a href="{{url_for('shop')}}" class="btn text-white bgorange mt-3 form-control">Shop</a>
+								</div>
+							    
+							</div>
+						</div>
+					</div>
+
+			<!-- Discover more .. link -->
+
+			<div class="row">
+				<div class="col my-5 d-flex justify-content-center mb-3">
+					<a href="{{url_for('shop')}}" class="btn btn-lg btn-outline-success form-control d-inline-block">Explore more...</a>
+				</div>
+			</div>
+
+			<!-- Hunt for products -->
+				
+			<div class="col vh50 d-flex align-items-center justify-content-center">
+				<div>
+					<div class="col mt-2 pt-2 text-center">
+						<!-- <h2 class="orange">
+							Discover products with up to <span class="text-success">80%</span> discount!
+						</h2> -->
+					<a href="{{url_for('shop')}}"><img src="{{url_for('static', filename='imagepage1/shopbanner2.png')}}" alt="shopbanner2" class="img-fluid"></a>
+					</div>
+					<div class="col d-flex justify-content-center">
+						<!-- <a href="{{url_for('shop')}}" class="btn btn-lg btn-outline-success d-inline-block">Discover more -->
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Reviews section -->
+
+			<div class="row">
+				<!-- col for the reviews -->
+
+				<div class="col my-5">
+					<!-- Let's read from our latest buyers -->
+					<div class="col">
+						<div class="col">
+							<h6 class="text-center text-success">WHAT BUYERS SAY</h6>
+						</div>
+						<div class="col">
+							<h4 class="orange text-center">Latest buyers Reviews</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+					<!-- The carousel goes here. -->
+				
+					<!-- col for the first card -->
+			<div class="row">
+				<div class="col d-flex justify-content-center">
+					<div class="card col-4 col-md-6 col-lg-3">
+						<div class="card-body">
+							<div>
+								<div><img src="{{url_for('static',filename='imagepage1/boots.jpg')}}" class="img-fluid"></div>
+							</div>
+							<h6 class="card-title mb-2">Gardening Boots</h6>
+							<h6 class="card-subtitle mb-2 orange">FARMING AID</h6>
+							<h6 class="card-subtitle text-muted mb-2">Vendor: F&G Company</h6>
+							<p class="card-text">The boots fit perfectly and they arrived on schedule.</p>
+							<i class="fa-solid fa-star orange"></i>
+							<i class="fa-solid fa-star orange"></i>
+							<i class="fa-solid fa-star orange"></i>
+							<i class="fa-solid fa-star orange"></i>
+							<i class="fa-solid fa-star-half-stroke orange"></i>
+							<p class="card-subtitle mt-2 text-muted">David Peters, 01 Jul 2022</p>
+						</div>
+					</div>
+
+					<div class="card col-4 col-md-6 mx-3 col-lg-3">
+						<div class="card-body">
+							<div>
+								<div><img src="{{url_for('static',filename='imagepage1/boots.jpg')}}" class="img-fluid"></div>
+							</div>
+							<h6 class="card-title mb-2">Gardening Boots</h6>
+							<h6 class="card-subtitle mb-2 orange">FARMING AID</h6>
+							<h6 class="card-subtitle text-muted mb-2">Vendor: F&G Company</h6>
+							<p class="card-text">The boots fit perfectly and they arrived on schedule.</p>
+							<i class="fa-solid fa-star orange"></i>
+							<i class="fa-solid fa-star orange"></i>
+							<i class="fa-solid fa-star orange"></i>
+							<i class="fa-solid fa-star orange"></i>
+							<i class="fa-solid fa-star-half-stroke orange"></i>
+							<p class="card-subtitle mt-2 text-muted">David Peters, 01 Jul 2022</p>
+						</div>
+					</div>
+
+							<!-- Col for the second card -->
+							
+					<div class="card col-4 col-md-6 col-lg-3">
+						<div class="card-body">
+							<div>
+								<div><img src="{{url_for('static',filename='imagepage1/livestock.jpg')}}" class="img-fluid"></div>
+							</div>
+							<h6 class="card-title mb-2">Broilers</h6>
+							<h6 class="card-subtitle mb-2 orange">LIVE STOCK</h6>
+							<h6 class="card-subtitle text-muted mb-2">Vendor: J K Ikorodu farms</h6>
+							<p class="card-text">They came on time and they're very healthy, Great Job!</p>
+							<i class="fa-solid fa-star orange"></i>
+							<i class="fa-solid fa-star orange"></i>
+							<i class="fa-solid fa-star orange"></i>
+							<i class="fa-solid fa-star orange"></i>
+							<i class="fa-solid fa-star orange"></i>
+							<p class="card-subtitle mt-2 text-muted">Dami Fadeyi, 01 Jul 2022</p>
+						</div>
+					</div>
+				</div>		
+			</div>
+					
+
+			
+
+			<!-- Back to top -->
+
+			<div class ="row bgorange mt-2">
+				<div class="col">
+					<a href="#" class="btn text-white form-control bgorange mt-3">Back to top</a>
+				</div>
+			</div>
+
+			
+
+			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasLogin" aria-labelledby="offcanvasTopLabel">
+			  <div class="offcanvas-header">
+			    <h5 id="offcanvasTopLabel">Login form</h5>
+			    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			  </div>
+			  <div class="offcanvas-body">
+			    <div class="mb-5">
+			    	<h6>User Login</h6>
+			    	<div class="mb-3">
+			    		<input type="text" name="username_1" id="user_name" class="form-control" placeholder="Enter username">
+			    	</div>
+			    	<div class="mb-3">
+			    		<input type="password" name="password_1" id="pswrd" class="form-control" placeholder="Password">
+			    	</div>
+			    	<div class="mb-3">
+			    		<a href="#" class="btn bgorange form-control text-white">Login</a>
+			    	</div>
+			    </div>
+			    <div>
+			    	<h6>Vendor Login</h6>
+			    	<div class="mb-3">
+			    		<input type="text" name="username_2" id="user_name1" class="form-control" placeholder="Enter username">
+			    	</div>
+			    	<div class="mb-3">
+			    		<input type="password" name="password_2" id="pswrd2" class="form-control" placeholder="Password">
+			    	</div>
+			    	<div class="mb-3">
+			    		<a  href = "vendor.html"class="btn bgorange form-control text-white">Login</a>
+			    	</div>
+			    </div>
+			  </div>
+			</div>
+		</div>
+		{% include 'footer.html'%}
+		<!-- JS Files *best practice is to add your files yourself. For the CDN route, you'll be required to have internet connection. The popper js is in the bundle.js file.*-->
+
+		<script type="text/javascript" language="javascript">
+			
+
+		</script>
+	</body>
+</html>

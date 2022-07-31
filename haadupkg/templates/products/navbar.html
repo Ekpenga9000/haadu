@@ -1,0 +1,278 @@
+<!Doctype html>
+<html lang="en">
+	<head>
+		
+		<meta charset = "UTF-8">
+		<meta name = "viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit = no">
+		<link href = "{{url_for('static',filename='css/bootstrap.css')}}" rel = "stylesheet" type = "text/css">
+		<link href = "{{url_for('static',filename='fontawesome/css/all.css')}}" rel = "stylesheet" type = "text/css">
+		<link href = "{{url_for('static',filename='stylesheet.css')}}" rel = "stylesheet" type = "text/css">
+
+	</head>
+	<body>
+		<div class="container-fluid">
+
+			<!-- 1st Nav -->
+
+			<div id = "first-nav" class="row">
+				<div class="col"><nav class="navbar navbar-expand-lg navbar-light bg-white">
+				  <div class="container-fluid">
+				    <a class="navbar-brand" href="#"><img src="{{url_for('static',filename='imagepage1/haadu2.png')}}" alt="logo" class="" height="50"><span class="visually-hidden">Navbar</span></a>
+				    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				      <span class="navbar-toggler-icon"></span>
+				    </button>
+
+				    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+						
+				       <ul class="navbar-nav  mb-2 mb-lg-0 ms-auto"> <!--ms-auto -->
+
+						{% if loggedin == None %}
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="signupdropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							  Sign up
+							</a>
+							<ul class="dropdown-menu mx-5" aria-labelledby="signupdropdown">
+							  <li ><a class="dropdown-item" href="{{url_for('user_signup')}}">User Signup</a></li>
+							  <li><a class="dropdown-item" href="/vendor/login">Vendor Signin</a></li>
+							</ul>
+						  </li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<i class="fa-solid fa-user"></i> Account</a>
+							</a>
+							<ul class="dropdown-menu mx-5" aria-labelledby="navbarDropdown1">
+							  <li><a class="dropdown-item btn text-white bgorange mt-3" href="{{url_for('user_login')}}">Sign in</a></li>
+							  <li><a class="dropdown-item" href="#">Orders</a></li>
+							  <li><a class="dropdown-item" href="#">Terms &amp; Conditions</a></li>
+							</ul>
+						</li>
+
+						{% else %}
+						
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<i class="fa-solid fa-user"></i> Hi, {{loggedin.firstname}}</a>
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+							  <li><a class="dropdown-item btn text-white bgorange mt-3 " href="/user/profile">My Account</a></li>
+							  <li><a class="dropdown-item" href="/user/order/view">Orders</a></li>
+							  <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
+							</ul>
+						</li>
+						
+						
+						
+				        <li class="nav-item">
+							{% if cart_num1 != 0 %}
+				          <a class="nav-link" href="/user/cart/view" class="d-inline-block">
+							<i class="fa-solid fa-cart-shopping lead"></i>
+							<!-- <i class="fa-solid fa-circle-exclamation"></i> -->
+							<!-- <i class="fa-solid fa-bell"></i> -->
+							<span id="cart" class="badge bgorange text-white p-1 rounded">
+								{{cart_num1}}
+								<!-- <i class="fa-solid fa-circle-exclamation"></i> -->
+								<span class="visually-hidden">Cart</span>
+							</span>
+							</a>
+							{% else %}
+							<a class="nav-link" href="/user/cart/view" class="d-inline-block">
+								<!-- <i class="fa-solid fa-cart-shopping lead"></i> -->
+								<i class="fa-solid fa-cart-shopping lead cgray"></i>
+								<!-- <i class="fa-solid fa-circle-exclamation"></i> -->
+								<!-- <span id="cart" class="badge bgorange text-white p-1 rounded">
+									{{cart_num1}}
+									<span class="visually-hidden">Cart</span>
+								</span> -->
+							</a>
+							{%endif%}
+				        </li>
+						{% endif %}
+				      </ul>
+					  <!-- Navbar search -->
+					  <form action="/search_items" method="post" class="d-flex ms-auto "> <!-- mx-auto -->
+						<input type="hidden" name="csrf_token" id="csrf_token" value="{{csrf_token()}}">
+						<input class="form-control me-2" type="search" name="searchbar" placeholder="Search products" aria-label="Search" id="searchbar">
+						<button class="btn btn-outline-success" id="searchbtn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+					</form>
+					<!-- navbar search -->
+					<!-- {% for i in prx %}
+						<div><a href="/product/view/{{i.productid}}">{{i.product_name}}</a></div>
+					{% endfor %} -->
+				    </div>
+				  </div>
+				</nav>
+				</div>
+			</div>
+
+			<!-- 2nd Nav -->
+
+			<div class="row">
+				<div class="col ">
+					<nav class="navbar navbar-expand-lg  bg-white"> <!--navbar-light-->
+					  <div class="container-fluid">
+					    <a class="navbar-brand" href="#"><span class="visually-hidden">Haadu</span></a>
+					    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					      <span class="navbar-toggler-icon"></span>
+					    </button>
+					    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+					      <ul class="navbar-nav mx-auto mb-2 mb-lg-0"> <!--mx-auto-->
+					        <li class="nav-item">
+					          <a class="nav-link active" aria-current="page" href="{{url_for('shop')}}">Home</a>
+					        </li>
+					        <li class="nav-item dropdown">
+					          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					            Company
+					          </a>
+					          <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+					            <li><a class="dropdown-item" href="#">About us</a></li>
+					            <li><a class="dropdown-item" href="#">Careers</a></li>
+					            <li><a class="dropdown-item" href="#">Terms &amp; Conditions</a></li>
+					          </ul>
+					        </li>
+					       	 <li class="nav-item dropdown position-static">
+    
+				              <!-- Toggle -->
+				              <!-- <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Category</a> -->
+				    
+				              <!-- Menu -->
+				              <div class="dropdown-menu w-100">
+				              
+				                <!-- Tabs -->
+				                <div class="mb-2 mb-lg-0 border-bottom-lg">
+				                  <div class="container">
+				                    <div class="row">
+				                      <div class="col-12">
+				              
+				                        <!-- Nav -->
+				                        <nav class="nav nav-tabs nav-overflow fs-xs border-bottom border-bottom-lg-0">
+				                          <a class="nav-link text-uppercase active" data-bs-toggle="tab" href="#navTab">
+				                            All Categories
+				                          </a>
+				                        </nav>
+				              
+				                      </div>
+				                    </div>
+				                  </div>
+				                </div>
+				              
+								<div class="card card-lg">
+									<div class="card-body">
+									  <div class="tab-content">
+										<div class="tab-pane fade show active" id="navTab">
+										  <div class="container">
+											<div class="row">
+											  <div class="col-6 col-md">
+								
+												<!-- Heading -->
+												<div class="mb-5 fw-bold text-success">Consumables</div>
+								
+												<!-- Links -->
+												<ul class="list-styled mb-6 mb-md-0 fs-sm">
+												  <li class="list-styled-item">
+													<a class="list-styled-link" href="#">Vegetables</a>
+												  </li>
+												  <li class="list-styled-item">
+													<a class="list-styled-link" href="#">Grains &amp; legumes</a>
+												  </li>
+												  <li class="list-styled-item">
+													  <a class="list-styled-link" href="#">Other plant Products</a>
+													</li>
+												  <li class="list-styled-item">
+													<a class="list-styled-link" href="#">Animal Products</a>
+												  </li>
+												</ul>
+								
+											  </div>
+											  <div class="col-6 col-md">
+								
+												<!-- Heading -->
+												<div class="mb-5 fw-bold text-success">Live Stock farming</div>
+								
+												<!-- Links -->
+												<ul class="list-styled mb-6 mb-md-0 fs-sm">
+												  <li class="list-styled-item">
+													<a class="list-styled-link" href="#">Poultry farming</a>
+												  </li>
+												  <li class="list-styled-item">
+													  <a class="list-styled-link" href="#">Aquatic Animal farming</a>
+												  </li>
+												  <li class="list-styled-item">
+													<a class="list-styled-link" href="#">Animal farming</a>
+												  </li>
+												</ul>
+								
+											  </div>
+											  <div class="col-6 col-md">
+								
+												<!-- Heading -->
+												<div class="mb-5 fw-bold text-success">Horticulture</div>
+								
+												<!-- Links -->
+												<ul class="list-styled mb-0 fs-sm">
+												  <li class="list-styled-item">
+													<a class="list-styled-link" href="#">Farming Tools &amp; Machinery</a>
+												  </li>
+												  <li class="list-styled-item">
+													<a class="list-styled-link" href="#">Manure, Fertilizers</a>
+												  </li>
+												  <li class="list-styled-item">
+													<a class="list-styled-link" href="#">Plant care</a>
+												  </li>
+												</ul>
+								
+											  </div>
+											</div>
+										  </div>
+										</div>
+									  </div>
+									</div>
+								  </div>
+								
+								</div>
+					  
+							  </li>
+							  <li class="nav-item">
+								<a class="nav-link">FAQs</a>
+							  </li>
+							  <li class="nav-item">
+								<a class="nav-link">Shipping</a>
+							  </li>
+							</ul>
+							<i class="fa-brands fa-facebook orange d-inline-block mx-3"></i>
+							<i class="fa-brands fa-twitter orange d-inline-block mx-3"></i>
+							<i class="fa-brands fa-instagram orange d-inline-block mx-3"></i>
+							<i class="fa-brands fa-google-plus-g orange d-inline-block"></i>
+						  </div>
+						</div>
+					  </nav>
+				  </div>
+			  </div>
+				<script type="text/javascript" src="{{url_for('static',filename='jquery.3.6.0.js')}}"></script>
+				<script type="text/javascript" src="{{url_for('static',filename='jquery.3.6.0.min.js')}}"></script>
+				<script src="{{url_for('static',filename='vendor/jquery/jquery.min.js')}}"></script>
+				<script src="{{url_for('static',filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+				<script type="text/javascript" src="{{url_for('static',filename='js/bootstrap.bundle.js')}}"></script>
+			  	<script>
+				 $(document).ready(function(){
+					var search = document.getElementById('searchbar').val
+					$("#searchbtn").click(function(){
+						$.ajax({
+							url:"/search_items",
+							data:search,
+							type:"get",
+							dataType:"text",
+							success:function(rsp){
+								console.log(rsp)
+							},
+
+							error:function(error){
+								console.log(error)
+							}
+				
+						});
+					});
+				 });
+			  </script>
+        </body>
+</html>        

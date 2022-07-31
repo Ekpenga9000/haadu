@@ -1,0 +1,62 @@
+{% extends 'vendor/vendorregpanel.html'%}
+
+{% block form %}
+
+<div>
+	<h2 class="orange">Vendor registration</h2>
+</div>
+{% set msg = get_flashed_messages()%}
+{% if msg %}
+{% for i in msg %}
+<p class="alert alert-danger">{{i}}</p>
+{% endfor %}
+{% endif %}
+<div class="col">
+	<form action="/vendor/register/" method="post">
+		<input type="hidden" name="default_profile" id="" value="profile_default.jpg">
+	  <div class="col-lg-9">
+		{{vsignup.vendorname.label}}
+		{{vsignup.vendorname(class_="form-control")}}
+	  </div>
+	  <div class="col-lg-9">
+        {{vsignup.shoptype.label}}
+		{{vsignup.shoptype(class_="form-control")}}
+	  </div>
+	  <div class="col-lg-9">
+		{{vsignup.email.label}}
+		{{vsignup.email(class_="form-control")}}
+	  </div>
+	  <div class="col-lg-9">
+		{{vsignup.phone.label}}
+		{{vsignup.phone(class_="form-control")}}
+	  </div>
+      <div class="col-lg-9">
+		{{vsignup.address.label}}
+		{{vsignup.address(class_="form-control")}}
+	  </div>
+      <div class="col-lg-9">
+		{{vsignup.state.label}}
+		{{vsignup.state(class_="form-control")}}
+	  </div>
+      <div class="col-lg-9">
+		{{vsignup.username.label}}
+		{{vsignup.username(class_="form-control")}}
+	  </div>
+      <div class="col-lg-9">
+		{{vsignup.password.label}}
+		{{vsignup.password(class_="form-control")}}
+	  </div>
+      <div class="col-lg-9">
+		{{vsignup.cpassword.label}}
+		{{vsignup.cpassword(class_="form-control")}}
+	  </div>
+	  	
+	  <div class="col-9">
+		{{vsignup.submit(class_="form-control btn bgorange form-control my-3 text-white")}}
+	  </div>
+
+	  {{vsignup.csrf_token}}
+	</form>
+</div>
+
+{% endblock %}

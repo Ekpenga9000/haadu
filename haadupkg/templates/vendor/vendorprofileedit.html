@@ -1,0 +1,59 @@
+{% extends 'vendor/vendortemplate.html'%}
+
+{% block table %}
+
+{% set msg = get_flashed_messages()%}
+{% if msg %}
+{% for i in msg %}
+<p class="alert alert-info">{{i}}</p>
+{% endfor %}
+{% endif %}
+
+<div class="col-md-9">
+    {% for i in vdeets %}
+    <form action="/vendor/profile/update/" method="post">
+        <div class="col-lg-9">
+            {{vedit.vendorname.label}}
+            {{vedit.vendorname(class_="form-control", value=i.vendor_name)}}
+          </div>
+          <div class="col-lg-9">
+            {{vedit.shoptype.label}}
+            {{vedit.shoptype(class_="form-control", value=i.vendor_type)}}
+          </div>
+          <div class="col-lg-9">
+            {{vedit.email.label}}
+            {{vedit.email(class_="form-control", value=i.email)}}
+          </div>
+          <div class="col-lg-9">
+            <div>
+              <label for="address">Address</label>
+            </div>
+            <textarea name="address" id="address" cols="30" rows="10" class="form-control">{{i.address}}</textarea>
+          </div>
+          <div class="col-lg-9">
+            {{vedit.phone.label}}
+            {{vedit.phone(class_="form-control", value=i.phone)}}
+          </div>
+          <div class="col-lg-9 my-3">
+            <div>
+                <label for="state">State</label>
+            </div>
+            <div>
+                <select name="state" id="state" required class="form-select">
+                    <option value="{{i.stateid}}">-- {{i.stateview.state_name}} --</option>
+            {%endfor%}      
+            {% for j in state %}        
+                    <option value="{{j.stateid}}">{{j.state_name}}</option>
+            {% endfor %}        
+                </select>
+            </div> 
+          </div>         
+          <div class="col-9">
+            {{vedit.submit(class_="form-control btn bgorange form-control my-3 text-white")}}
+          </div>
+    
+          {{vedit.csrf_token}}
+    </form>
+</div>
+
+{% endblock%}

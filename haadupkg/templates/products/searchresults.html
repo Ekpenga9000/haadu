@@ -1,0 +1,18 @@
+{%extends 'products/shop.html'%}
+
+{% block body %}
+<div class="col">
+    <h1 class="display-6 text-white bgorange p-3">Search results</h1>
+{% if prx %}   
+{% for i in prx %}
+<div>
+    <a href="/product/view/{{i.productid}}" class="lead">{{i.product_name}}</a>
+</div>
+{% endfor %}
+{%else%}
+<div>
+    <p class="lead">No product that matches your search was found</p>
+</div>
+{%endif%}
+</div>		
+{%endblock%}

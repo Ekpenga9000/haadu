@@ -1,0 +1,100 @@
+{% extends 'user/useraccount.html'%}
+
+{% block table %}
+	<div>
+		<h1 class="display-6 text-success">Checkout</h1>
+	</div>
+	{% set msg = get_flashed_messages()%}
+	{% if msg %}
+	<span class="alert alert-danger">{{msg[0]}}</span>
+	{% endif %}
+
+	{% if cart_deets %}
+	
+		<hr>
+        <p class="lead">Your order</p>
+		<div class="d-flex my-3">
+            {% for i,j in cart_deets%}
+            <div>
+                <div class="me-5">
+                    <img src="{{url_for('static', filename='uploads/'+j.product_img)}}"  alt="{{j.product_name}}" height="100" width="150">
+                </div>
+                <div>
+                    <p>{{j.product_name}}</p>
+                    <p>Quantity: {{i.quantity}}</p>
+                    <p>Amount: &#x20A6;{{"{:,.2f}".format(i.amount)}}</p>
+                </div>
+            </div>
+            {% endfor %}	
+		</div>
+    <hr>
+        <div class="d-flex justify-content-center my-3">
+            <div class="col-4">
+                <a href="/user/cart/view" class="btn bgorange text-white"><i class="fa-solid fa-pen-to-square text-white"></i> Modify your Cart</a>
+            </div>
+        </div>
+	<hr>
+    <div>
+        <form action="/confirmation" method="post">
+            <div>
+                <label for="shipping_addy" class="form-label">Shipping Address</label>
+            </div>
+            <div class="mb-3">
+                {% for i in user_deets %}
+                <textarea name="shipping_addy" id="shipping_addy" cols="30" rows="10" class="form-control">
+                {{i.address}}
+                </textarea>
+            </div>
+
+            <div>
+                <label for="state">State</label>
+                <select name="state" id="state" class="form-select">
+                    <option value="{{i.stateid}}">{{i.userstateview.state_name}}</option>
+            {% endfor %}
+                    
+            {% for i in state%}
+                    <option value="{{i.stateid}}">{{i.state_name}}</option>
+            {% endfor%}
+                </select>
+            </div>
+
+            <hr>
+            <p class="lead">Shipping details</p>
+            <div class="mb-3">
+                <textarea name="" id="" cols="30" rows="10"  class="form-control" readonly>
+                {% for i,j in cart_deets%}
+                {{i.quantity}}x, {{j.product_name}}
+                {% endfor %}
+                </textarea>
+            </div>
+                <p class="lead"><b>Items will be delivered in 3 business days from the date the order was made.</b></p>
+            <div>
+                <input type="hidden" name="shipping fee" id="fee" value="500" readonly>
+            </div>
+             
+            <hr>
+            <input type="hidden" name="csrf_token" id="csrf_token" value="{{csrf_token()}}">
+            <div class="mt-5">
+                <p><b>Subtotal: &#x20A6;{{"{:,.2f}".format(amt)}}</b> <span class="visually-hidden">{{amt}}</span></p>
+                <p><b>Shipping Fee: &#x20A6;500 </b> <span class="visually-hidden">{{amt}}</span></p>
+                <hr>
+                <p><span style="font-weight: bold;">Total:</span>  <span style="font-weight:bold ;" class="orange">&#x20A6;{{"{:,.2f}".format(total)}}</span><span style="font-weight:bold ;" class="visually-hidden">{{total}}</span></p>
+            </div>
+            <div class="mb-3">
+                <button class="btn bgorange text-white">Make Payment</button>
+            </div>
+        </form>
+    </div>
+	{% else %}
+	<div class="d-flex justify-content-center my-5">
+		<div class="col-6 text-center">
+			<h1 class="lead">Your Checkout list is empty</h1>
+			<a href="{{url_for('shop')}}" class="btn bgorange text-white">Go to shop</a>
+		</div>	
+	</div>
+	{% endif %}
+{%endblock%}	
+
+{% block custom_script %}
+
+{% endblock %}

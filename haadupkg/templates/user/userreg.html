@@ -1,0 +1,55 @@
+{% extends 'user/userregpanel.html'%}
+
+{% block form %}
+
+	<div class="col-md-9 mb-5">
+		<div>
+			<h2 class="orange">User Registration form</h2>
+		</div>
+		{% set msg = get_flashed_messages()%}
+
+		{%if msg %}
+		<p class="alert alert-danger">{{msg[0]}}</p>
+		{%endif%}
+		
+		<div class="col">
+			<form action="/user/signup" method="post">
+				<div>
+					{{regform.firstname.label(class_="form-label")}}
+					{{regform.firstname(class_="form-control")}}
+				</div>
+				<div>
+					{{regform.lastname.label(class_="form-label")}}
+					{{regform.lastname(class_="form-control")}}
+				</div>
+				<div>
+					{{regform.email_addy.label(class_="form-label")}}
+					{{regform.email_addy(class_="form-control")}}
+				</div>
+				<div>
+					{{regform.phone.label(class_="form-label")}}
+					{{regform.phone(class_="form-control")}}
+				</div>
+				<div>
+					{{regform.username.label(class_="form-label")}}
+					{{regform.username(class_="form-control")}}
+				</div>
+				<div>
+					{{regform.password.label(class_="form-label")}}
+					{{regform.password(class_="form-control")}}
+				</div>
+				<div class="mb-3">
+					{{regform.cpassword.label(class_="form-label")}}
+					{{regform.cpassword(class_="form-control")}}
+				</div>
+					{{regform.csrf_token()}}
+				<div>
+					{{regform.submit(class_="form-control bgorange text-white")}}
+				</div>	
+			</form>
+		</div>
+	</div>
+        
+{% endblock %}
+
+<!-- Javascript for the check button -->

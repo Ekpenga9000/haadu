@@ -1,0 +1,39 @@
+{% extends 'admin/adminregpanel.html'%}
+{% block form %}
+<div>
+	<h2 class="orange">Admin registration</h2>
+</div>
+{% set msg = get_flashed_messages()%}
+{% if msg %}
+{% for i in msg %}
+<p class="alert alert-danger">{{i}}</p>
+{% endfor %}
+{% endif %}
+<div class="col">
+	<form action="/admin/register" method="post">
+	  <div class="col-lg-9">
+		{{signup.adminname.label}}
+		{{signup.adminname(class_="form-control")}}
+	  </div>
+	  <div class="col-lg-9">
+		{{signup.username.label}}
+		{{signup.username(class_="form-control")}}
+	  </div>
+	  <div class="col-lg-9">
+		{{signup.password.label}}
+		{{signup.password(class_="form-control")}}
+	  </div>
+	  <div class="col-lg-9">
+		{{signup.cpassword.label}}
+		{{signup.cpassword(class_="form-control")}}
+	  </div>
+	  	
+	  <div class="col-9">
+		{{signup.submit(class_="form-control btn bgorange form-control my-3 text-white")}}
+	  </div>
+
+	  {{signup.csrf_token}}
+	</form>
+</div>
+{% endblock%}
+			

@@ -1,0 +1,372 @@
+<!Doctype html>
+<html lang="en">
+	<head>
+		<title>Haadu | {% block title %}Shop{% endblock %}</title>
+		<meta charset = "UTF-8">
+		<meta name = "viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit = no">
+		<link href = "{{url_for('static',filename='css/bootstrap.css')}}" rel = "stylesheet" type = "text/css">
+		<link href = "{{url_for('static',filename='fontawesome/css/all.css')}}" rel = "stylesheet" type = "text/css">
+		<link href = "{{url_for('static',filename='stylesheet.css')}}" rel = "stylesheet" type = "text/css">
+
+	</head>
+	<body>
+		<div class="container-fluid">
+
+			{% include 'products/navbar.html'%}
+            <div class = "row">
+                <div class="col bgorange text-white my-3">
+                    <h3>Category >>> {% block category %} Categories {% endblock %}</h3>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 col-lg-2">
+                    <div class="col-12" style="border: 1px solid rgb(189, 189, 189);">
+                        <div class="bgorange p-3">
+                            <i class="fa-solid fa-ellipsis d-inline-block me-2 white"></i>
+                            <span class="text-white d-inline-block ">Catergories</span>
+                        </div>
+                        <div class="col-12">
+                            <div class="bgorange"><i class="fa-solid fa-salad"></i> <span class="d-inline-block text-white">Consumables</span></div>
+                            <div class="p-1 bg-white"><i class="fa-solid fa-apple-whole text-success me-1"></i><a href="{{url_for('vegetables')}}" class="d-inline-block">Vegetables</a></div>
+                            <div class="px-1 bg-white"><i class="fa-solid fa-bowl-food text-success me-1"></i><a href="{{url_for('grains_legumes')}}" class="d-inline-block">Grains, legumes</a></div>
+                            <div class="px-1 bg-white"><i class="fa-solid fa-bottle-droplet text-success"></i><a href="{{url_for('plant_products')}}" class="d-inline-block">Other plant products</a></div>
+                            <div class="px-1 bg-white"><i class="fa-solid fa-egg text-success me-1"></i><a href="{{url_for('animal_products')}}" class="d-inline-block">Animal Products</a></div>
+                        </div>
+                        <div class="col-12">
+                            <div class="px-1 bgorange">
+                                <i class="fa-solid fa-salad"></i>
+                                <span class="d-inline-block text-white">Live Stock farming</span>
+                            </div>
+                            <div class="px-1 bg-white">
+                                <i class="fa-solid fa-kiwi-bird text-success"></i>
+                                <a href="{{url_for('poultry_farming')}}" class="d-inline-block">Poultry farming</a>
+                            </div>
+                            <div class="p-1 bg-white">
+                                <i class="fa-solid fa-fish-fins text-success"></i>
+                                <a href="{{url_for('fish_farming')}}" class="d-inline-block">Aquatic farming</a>
+                            </div>
+                            <div class="px-1 bg-white">
+                                <i class="fa-solid fa-cow text-success"></i>
+                                <a href="{{url_for('animal_farming')}}" class="d-inline-block">Animal farming</a>
+                            </div>
+                        </div>
+                        <div class="col-12">
+					
+                            <div class="px-1 bgorange"><i class="fa-solid fa-salad"></i> <span class="d-inline-block text-white">Horticulture</span></div>
+                            <div class="px-1 bg-white"><i class="fa-solid fa-poo text-success me-1"></i><a href="{{url_for('fertilizers')}}" class="d-inline-block">Manure & Fertilizer</a></div>
+                            <div class="p-1 bg-white"><i class="fa-solid fa-tractor text-success me-1"></i><a href="{{url_for('farming_tools')}}" class="d-inline-block">Tools & Machinery</a></div>
+                            <div class="p-1 bg-white"><i class="fa-solid fa-seedling text-success me-1"></i></i><a href="{{url_for('plantcare')}}" class="d-inline-block">Plant care</a></div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-10">
+                    <div class="row">
+                        {% block items %}
+
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+
+			<div class="row">
+				<div class="col p-3 bgorange my-3">
+					<h5 class="text-center text-white">Explore marketplace</h5>
+				</div>
+			</div>
+
+			
+			<!-- row for Top sellers of the month -->
+
+					<div class="row mt-5 px-5">
+						<!-- first item -->
+						<div class="col-lg-2 col-md-6 col-sm-6 px-2 mb-3">
+                            <div class="card product-card">
+                              <div class="product-card-actions d-flex align-items-center"><a class="btn-action nav-link-style me-2" href="#">
+                              </div><a class="card-img-top d-block overflow-hidden" href="shop-single-v2.html"><img src="{{url_for('static',filename='imagepage1/chickens.jpg')}}" alt="Product" class="img-fluid"></a>
+                              <div class="card-body"><a class="product-meta d-block " href="{{url_for('poultry_farming')}}"><span class="text-secondary">Poultry Farming</span></a>
+                                <p class="product-title fs-sm"><a href="{{url_for('poultry_farming')}}"><span class="text-secondary">Broilers</span></a></p>
+                                <div>
+                                    <div class="product-price"><span class="text-accent">&#x20A6;1,200</span></div>
+                                    <div class="orange">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <a href="#"><span class="text-secondary">(56)</span></a>
+                                    </div>
+                                </div>
+                                
+                              </div>
+                              <div class="card-body card-body-hidden">
+                                <button class="btn bgorange btn-sm d-block w-100 mb-2 text-white" type="button"><i class="fa-solid fa-cart-shopping text-white"></i>Add to Cart</button>
+                              </div>
+                            </div>
+                        </div>
+
+						<!-- second item -->
+						
+						<div class="col-lg-2 col-md-6 col-sm-6 px-2 mb-3">
+                            <div class="card product-card">
+                              <div class="product-card-actions d-flex align-items-center"><a class="btn-action nav-link-style me-2" href="#">
+                              </div><a class="card-img-top d-block overflow-hidden" href="shop-single-v2.html"><img src="{{url_for('static',filename='imagepage1/chickens.jpg')}}" alt="Product" class="img-fluid"></a>
+                              <div class="card-body"><a class="product-meta d-block " href="{{url_for('poultry_farming')}}"><span class="text-secondary">Poultry Farming</span></a>
+                                <p class="product-title fs-sm"><a href="{{url_for('poultry_farming')}}"><span class="text-secondary">Broilers</span></a></p>
+                                <div>
+                                    <div class="product-price"><span class="text-accent">&#x20A6;1,200</span></div>
+                                    <div class="orange">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <a href="#"><span class="text-secondary">(56)</span></a>
+                                    </div>
+                                </div>
+                                
+                              </div>
+                              <div class="card-body card-body-hidden">
+                                <button class="btn bgorange btn-sm d-block w-100 mb-2 text-white" type="button"><i class="fa-solid fa-cart-shopping text-white"></i>Add to Cart</button>
+                              </div>
+                            </div>
+                        </div>
+						<!-- third item -->
+                        <div class="col-lg-2 col-md-6 col-sm-6 px-2 mb-3">
+                            <div class="card product-card">
+                              <div class="product-card-actions d-flex align-items-center"><a class="btn-action nav-link-style me-2" href="#">
+                              </div><a class="card-img-top d-block overflow-hidden" href="shop-single-v2.html"><img src="{{url_for('static',filename='imagepage1/chickens.jpg')}}" alt="Product" class="img-fluid"></a>
+                              <div class="card-body"><a class="product-meta d-block " href="{{url_for('poultry_farming')}}"><span class="text-secondary">Poultry Farming</span></a>
+                                <p class="product-title fs-sm"><a href="{{url_for('poultry_farming')}}"><span class="text-secondary">Broilers</span></a></p>
+                                <div>
+                                    <div class="product-price"><span class="text-accent">&#x20A6;1,200</span></div>
+                                    <div class="orange">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <a href="#"><span class="text-secondary">(56)</span></a>
+                                    </div>
+                                </div>
+                                
+                              </div>
+                              <div class="card-body card-body-hidden">
+                                <button class="btn bgorange btn-sm d-block w-100 mb-2 text-white" type="button"><i class="fa-solid fa-cart-shopping text-white"></i>Add to Cart</button>
+                              </div>
+                            </div>
+                        </div>
+						
+						<div class="col-lg-2 col-md-6 col-sm-6 px-2 mb-3">
+                            <div class="card product-card">
+                              <div class="product-card-actions d-flex align-items-center"><a class="btn-action nav-link-style me-2" href="#">
+                              </div><a class="card-img-top d-block overflow-hidden" href="shop-single-v2.html"><img src="{{url_for('static',filename='imagepage1/chickens.jpg')}}" alt="Product" class="img-fluid"></a>
+                              <div class="card-body"><a class="product-meta d-block " href="{{url_for('poultry_farming')}}"><span class="text-secondary">Poultry Farming</span></a>
+                                <p class="product-title fs-sm"><a href="{{url_for('poultry_farming')}}"><span class="text-secondary">Broilers</span></a></p>
+                                <div>
+                                    <div class="product-price"><span class="text-accent">&#x20A6;1,200</span></div>
+                                    <div class="orange">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <a href="#"><span class="text-secondary">(56)</span></a>
+                                    </div>
+                                </div>
+                                
+                              </div>
+                              <div class="card-body card-body-hidden">
+                                <button class="btn bgorange btn-sm d-block w-100 mb-2 text-white" type="button"><i class="fa-solid fa-cart-shopping text-white"></i>Add to Cart</button>
+                              </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-6 col-sm-6 px-2 mb-3">
+                            <div class="card product-card">
+                              <div class="product-card-actions d-flex align-items-center"><a class="btn-action nav-link-style me-2" href="#">
+                              </div><a class="card-img-top d-block overflow-hidden" href="shop-single-v2.html"><img src="{{url_for('static',filename='imagepage1/chickens.jpg')}}" alt="Product" class="img-fluid"></a>
+                              <div class="card-body"><a class="product-meta d-block " href="{{url_for('poultry_farming')}}"><span class="text-secondary">Poultry Farming</span></a>
+                                <p class="product-title fs-sm"><a href="{{url_for('poultry_farming')}}"><span class="text-secondary">Broilers</span></a></p>
+                                <div>
+                                    <div class="product-price"><span class="text-accent">&#x20A6;1,200</span></div>
+                                    <div class="orange">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <a href="#"><span class="text-secondary">(56)</span></a>
+                                    </div>
+                                </div>
+                                
+                              </div>
+                              <div class="card-body card-body-hidden">
+                                <button class="btn bgorange btn-sm d-block w-100 mb-2 text-white" type="button"><i class="fa-solid fa-cart-shopping text-white"></i>Add to Cart</button>
+                              </div>
+                            </div>
+                        </div>
+
+						<div class="col-lg-2 col-md-6 col-sm-6 px-2 mb-3">
+                            <div class="card product-card">
+                              <div class="product-card-actions d-flex align-items-center"><a class="btn-action nav-link-style me-2" href="#">
+                              </div><a class="card-img-top d-block overflow-hidden" href="shop-single-v2.html"><img src="{{url_for('static',filename='imagepage1/chickens.jpg')}}" alt="Product" class="img-fluid"></a>
+                              <div class="card-body"><a class="product-meta d-block " href="{{url_for('poultry_farming')}}"><span class="text-secondary">Poultry Farming</span></a>
+                                <p class="product-title fs-sm"><a href="{{url_for('poultry_farming')}}"><span class="text-secondary">Broilers</span></a></p>
+                                <div>
+                                    <div class="product-price"><span class="text-accent">&#x20A6;1,200</span></div>
+                                    <div class="orange">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <a href="#"><span class="text-secondary">(56)</span></a>
+                                    </div>
+                                </div>
+                                
+                              </div>
+                              <div class="card-body card-body-hidden">
+                                <button class="btn bgorange btn-sm d-block w-100 mb-2 text-white" type="button"><i class="fa-solid fa-cart-shopping text-white"></i>Add to Cart</button>
+                              </div>
+                            </div>
+                        </div>
+					</div>
+
+			<!-- Back to top -->
+
+			<div class ="row">
+					<a href="#" class="btn text-white form-control bgorange mt-3">Back to top</a>
+			</div>
+
+			<!-- Do you want to catch us with the latest deals -->
+
+			<div class="row bgfooter">
+
+				<!-- Do you want to catch us with the latest deals - col-->
+				<div class="col mb-3">
+
+					<!-- Do you want to catch us with the latest deals -->
+					<div class="col">
+						<h3 class="text-white text-center my-5">Do you want to catch us with the latest deals</h3>
+					</div>
+
+					<!-- subscribe -->
+					<div class="col d-md-flex justify-content-center">
+						<div class="col-md-4 d-md-flex justify-content-center">
+							<div class="col me-2">
+								<input type="email" name="email" id="emailaddress" class="form-control bg-secondary">
+							</div>
+							<div class="col">	
+								<button type="button" class="btn btn-success">Subscribe</button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+			<!-- Footer -->
+
+			<div class="row bgfooter">
+				<!-- footer col -->
+				<div class="col d-md-flex mb-5">
+
+					<!-- footer col 2 -->
+
+					<div class="col">
+						<div class="col"><img src="{{url_for('static',filename='imagepage1/haadu2.png')}}" alt = "Logo" class="img-fluid"></div>
+					</div>
+
+					<!-- footer col 2 -->
+					<div class="col d-flex">
+						<div class="col">
+							<h6 class="mb-3 text-white">Support</h6>
+							<a href="#" class="d-block orange mb-2">Contact Us</a>
+							<a href="#" class="d-block orange mb-2">FAQs</a>
+							<a href="#" class="d-block orange mb-2">Shipping & Returns</a>
+
+						</div>
+						<div class="col">
+							<h6 class="mb-3 text-white">Shop</h6>
+							<a href="#" class="d-block orange mb-2">Foods and Vegetable</a>
+							<a href="#" class="d-block orange mb-2">Live Stock</a>
+							<a href="#" class="d-block orange mb-2">Farming Tools</a>
+						</div>
+					</div>
+
+					<!-- footer col 3 -->
+
+					<div class="col d-flex">
+						<div class="col">
+							<h6 class="mb-3 text-white">Company</h6>
+							<a href="#" class="d-block orange mb-2">About us</a>
+							<a href="#" class="d-block orange mb-2">Careers</a>
+							<a href="#" class="d-block orange mb-2">Terms and Conditions</a>
+							<a href="#" class="d-block orange mb-2">Privacy and Cookies policy</a>
+						</div>
+						<div class="col">
+							<h6 class="mb-3 text-white">Contact</h6>
+							<a href="#" class="d-block orange mb-2">+1 234 5677</a>
+							<a href="#" class="d-block orange mb-2">+1 234 5667</a>
+							<a href="#" class="d-block orange mb-2">help@haadu.com</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- all rights reserved -->
+
+			<div class="row">
+				<div class="col bg-secondary p-3">
+					<p class="text-center text-white">Designed by Omogbare Ekpenga &copy; 2022</p>
+				</div>
+			</div>
+
+			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasLogin" aria-labelledby="offcanvasTopLabel">
+			  <div class="offcanvas-header">
+			    <h5 id="offcanvasTopLabel">Login form</h5>
+			    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			  </div>
+			  <div class="offcanvas-body">
+			    <div class="mb-5">
+			    	<h6>User Login</h6>
+			    	<div class="mb-3">
+			    		<input type="text" name="username_1" id="user_name" class="form-control" placeholder="Enter username">
+			    	</div>
+			    	<div class="mb-3">
+			    		<input type="password" name="password_1" id="pswrd" class="form-control" placeholder="Password">
+			    	</div>
+			    	<div class="mb-3">
+			    		<a href="useraccount.html" class="btn bgorange form-control text-white">Login</a>
+			    	</div>
+			    </div>
+			    <div>
+			    	<h6>Vendor Login</h6>
+			    	<div class="mb-3">
+			    		<input type="text" name="username_2" id="user_name1" class="form-control" placeholder="Enter username">
+			    	</div>
+			    	<div class="mb-3">
+			    		<input type="password" name="password_2" id="pswrd2" class="form-control" placeholder="Password">
+			    	</div>
+			    	<div class="mb-3">
+			    		<a  href = "vendor.html"class="btn bgorange form-control text-white">Login</a>
+			    	</div>
+			    </div>
+			  </div>
+			</div>
+
+		</div>
+		<!-- JS Files *best practice is to add your files yourself. For the CDN route, you'll be required to have internet connection. The popper js is in the bundle.js file.*-->
+
+		<script type="text/javascript" src="jquery.3.6.0.js"></script>
+		<script type="text/javascript" src="jquery.3.6.0.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" language="javascript">
+			
+
+		</script>
+	</body>
+</html>

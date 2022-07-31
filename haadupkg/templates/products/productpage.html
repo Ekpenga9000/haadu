@@ -1,0 +1,208 @@
+<!Doctype html>
+<html lang="en">
+	<head>
+		<title>Haadu | Product details</title>
+		<meta charset = "UTF-8">
+		<meta name = "viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit = no">
+		<link href = "{{url_for('static',filename='css/bootstrap.css')}}" rel = "stylesheet" type = "text/css">
+		<link href = "{{url_for('static',filename='fontawesome/css/all.css')}}" rel = "stylesheet" type = "text/css">
+		<link href = "{{url_for('static',filename='stylesheet.css')}}" rel = "stylesheet" type = "text/css">
+
+	</head>
+	<body>
+		<div class="container-fluid">
+			{% include 'products/navbar.html'%}
+			
+			<div class="row">
+				<div class="col d-md-flex border p-3 mb-3">
+					<div class="">
+						<i class="fa-solid fa-ellipsis d-inline-block me-2 orange"></i>
+						<span class="text-white d-inline-block orange">Catergories >>></span>
+					</div>
+					<div class="">
+					
+						<span class="text-white d-inline-block orange">{% block cate%} {%endblock%}>>></span>
+					</div>
+					<div class="">
+						
+						<span class="text-white d-inline-block orange">{% block prod %}{%endblock%}</span>
+					</div>
+				</div>	
+			</div>
+
+			<!-- Product display -->
+
+			<div class="row">
+				<div class="col d-md-flex justify-content-center">
+					<div class="col-lg-3">
+						{% block img %}
+
+						{%endblock%}
+					</div>
+					<div class="col-lg-4 p-3">
+						<div class="mb-3 px-2 me-2">
+							{%block details%}
+							
+							{%endblock%}	
+						</div>
+						<div class="mb-3 px-2">
+							{% block more %}
+							
+							{%endblock%}
+						</div>
+					
+						<div>
+							{% block add %}
+							
+							{% endblock %}
+						</div>
+					</div>
+				</div>	
+			</div>
+
+			<div class="row">
+				<div class="col d-flex justify-content-center">
+					<div class="col-md-7 p-3">
+						<h3>Product Description</h3>
+						<hr>
+						<p>
+						{% block desc %}
+							
+						{%endblock%}	
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col d-flex justify-content-center">
+					<div class="col-12 col-md-7 p-3">
+						<div class="col-12">
+							<h5>Specifications</h5>
+						</div>
+						<div class="col">
+							<div class="col p-3">
+								<ul>
+									{%block third%}
+									
+									{%endblock%}
+								</ul>
+							</div>
+						</div>	
+					</div>
+				</div>
+
+			</div>
+		
+
+			<!-- row for Top sellers of the month -->
+			<div class="row mt-5">
+
+			<!-- Back to top -->
+
+			<div class ="row">
+				<div class="col">
+					<a href="#" class="btn text-white form-control bgorange mt-3">Back to top</a>
+				</div>
+			</div>
+
+			<!-- Do you want to catch us with the latest deals -->
+
+			<div class="row bgfooter">
+
+				<!-- Do you want to catch us with the latest deals - col-->
+				<div class="col mb-3">
+
+					<!-- Do you want to catch us with the latest deals -->
+					<div class="col">
+						<h3 class="text-white text-center my-5">Do you want to catch us with the latest deals</h3>
+					</div>
+
+					<!-- subscribe -->
+					<div class="col d-md-flex justify-content-center">
+						<div class="col-md-4 d-md-flex justify-content-center">
+							<div class="col me-2">
+								<input type="email" name="email" id="emailaddress" class="form-control bg-secondary">
+							</div>
+							<div class="col">	
+								<button type="button" class="btn btn-success">Subscribe</button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+			<!-- Footer -->
+
+			<div class="row bgfooter">
+				<!-- footer col -->
+				<div class="col d-md-flex mb-5">
+
+					<!-- footer col 2 -->
+
+					<div class="col">
+						<div class="col"><img src="{{url_for('static',filename='imagepage1/haadu2.png')}}" alt = "Logo" class="img-fluid"></div>
+					</div>
+
+					<!-- footer col 2 -->
+					<div class="col d-flex">
+						<div class="col">
+							<h6 class="mb-3 text-white">Support</h6>
+							<a href="#" class="d-block orange mb-2">Contact Us</a>
+							<a href="#" class="d-block orange mb-2">FAQs</a>
+							<a href="#" class="d-block orange mb-2">Shipping & Returns</a>
+
+						</div>
+						<div class="col">
+							<h6 class="mb-3 text-white">Shop</h6>
+							<a href="#" class="d-block orange mb-2">Foods and Vegetables</a>
+							<a href="#" class="d-block orange mb-2">Live Stock</a>
+							<a href="#" class="d-block orange mb-2">Farming Tools</a>
+						</div>
+					</div>
+
+					<!-- footer col 3 -->
+
+					<div class="col d-flex">
+						<div class="col">
+							<h6 class="mb-3 text-white">Company</h6>
+							<a href="#" class="d-block orange mb-2">About us</a>
+							<a href="#" class="d-block orange mb-2">Careers</a>
+							<a href="#" class="d-block orange mb-2">Terms and Conditions</a>
+							<a href="#" class="d-block orange mb-2">Privacy and Cookies policy</a>
+						</div>
+						<div class="col">
+							<h6 class="mb-3 text-white">Contact</h6>
+							<a href="#" class="d-block orange mb-2">+1 234 5677</a>
+							<a href="#" class="d-block orange mb-2">+1 234 5667</a>
+							<a href="#" class="d-block orange mb-2">help@haadu.com</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- all rights reserved -->
+
+			<div class="row">
+				<div class="col bg-secondary">
+					<p class="text-center text-white">Designed by Omogbare Ekpenga &copy; 2022</p>
+				</div>
+			</div>
+			{% block modal %}
+			
+			{% endblock %}
+		</div>
+		<!-- JS Files *best practice is to add your files yourself. For the CDN route, you'll be required to have internet connection. The popper js is in the bundle.js file.*-->
+
+		<script type="text/javascript" src="{{url_for('static',filename='jquery.3.6.0.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='jquery.3.6.0.min.js')}}"></script>
+		<script src="{{url_for('static',filename='vendor/jquery/jquery.min.js')}}"></script>
+		<script src="{{url_for('static',filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/bootstrap.bundle.js')}}"></script>
+		{% block javascript %}
+		
+		{% endblock%}
+	</body>
+</html>

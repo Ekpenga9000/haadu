@@ -1,0 +1,179 @@
+	/*General class*/
+
+
+/* .container-fluid{
+	min-height: 100vh;
+} */
+
+/* div{
+	min-height: 100px;
+	border: 1px solid red;
+} */
+
+.border{
+	border: 10px solid;
+}
+.opacity65{
+	opacity: 0.65;
+	
+}
+
+.min-height100{
+	min-height: 100px;
+}
+
+.mt50{
+	margin-top: 50%;
+}
+
+.mt20{
+	margin-top: 20%;
+}
+
+.cntr25{
+	margin-left: 25%;
+	margin-top: 25%;
+}
+
+.left25{
+	margin-left: 25%;
+}
+
+.left35{
+	margin-left: 35%;
+}
+
+.left15{
+	margin-left: 15%;
+}
+
+.vh30{
+	min-height: 30vh;
+}
+
+
+.vh50{
+	min-height: 50vh;
+}
+
+.vh70{
+	min-height: 70vh;
+}
+
+.bgfooter{
+	background-color:#373e40 !important;
+}
+
+.newbutton{
+	background-color: #FF785A;
+	color: #FCFCFC;
+	padding: 10px;
+	border: none;
+}
+
+.newbutton:hover{
+
+	background-color: yellow;
+	color: #786A5D;
+}
+
+
+.ilarge{
+	color: #198754;
+}
+
+.orange{
+	color: #FF785A !important;
+}
+
+.white{
+	color: #fff !important;
+}
+
+.bgorange{
+	background-color: #FF785A !important;
+}
+
+#banner{
+	background-image: url('imagepage1/bglanding.jpg');
+	background-size: cover;
+}
+
+#search{
+	width: 45%;
+	height: 3em;
+	border-radius: 1em 0 0 1em;
+	border: none;
+	padding: 0 20px;
+}
+
+#btn_search{
+	height: 3em !important;
+	border-radius: 0 1em 1em 0;
+}
+#first-nav{
+	position: sticky;
+	top: 0px;
+	z-index: 999;
+}
+
+#offcanvasLogin{
+	z-index: 9999;
+}
+
+#livestock {
+	background: #fff url('imagepage1/livestock.png') no-repeat;
+	background-size: cover;
+}
+
+#foodstuff{
+	background: #fff url('imagepage1/foodproducts1.jpg') no-repeat;
+	background-size: cover;
+}
+
+#farming{
+	background: #fff url('imagepage1/farmingequipment.png') no-repeat;
+	background-size: cover;
+}
+
+ .move h1:hover{
+	background-color: #fff !important;
+	color: #198754 !important;
+	display: inline-block;
+	border-radius: 12px;
+	padding: 0 7px;
+	transition: ease-in-out 0.4s;
+}
+
+#vendor{
+	background: #fff url('imagepage1/vendor.jpg') no-repeat;
+	background-size: cover;
+}
+
+
+#buyer{
+	background: #fff url('imagepage1/buyer.jpg') no-repeat right;
+	background-size: cover;
+}
+
+#sales{
+	background: #fff url('imagepage1/bird.png') no-repeat left;
+	background-size: contain;
+}
+
+a{
+	text-decoration: none !important;
+}
+
+ul{
+	list-style-type: none !important;
+	list-style-position: outside !important;
+}
+
+li a {
+	color: #ff785a !important;
+}
+
+.cgray{
+	color: #636369;
+}

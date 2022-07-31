@@ -1,0 +1,32 @@
+{% extends 'admin/admintemplate.html'%}
+
+{% block table %}
+
+{% set msg = get_flashed_messages()%}
+{% if msg %}
+{% for i in msg %}
+<p class="alert alert-info">{{i}}</p>
+{% endfor %}
+{% endif %}
+<div>
+    <h1 class = "display-6">Please update order status</h1>
+</div>
+   
+        <form action="/admin/order_status_update/{{ord}}" method="post">   
+            <div>
+                <select name="order1" id="order" class="form-select">
+                    <option value="Processing">Processing</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+            </div>
+            <div>
+                <label for="message" class="form-label">Feedback</label>
+            </div>
+            <div>
+                <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <input type="hidden" name="csrf_token" id="csrf_token" value="{{csrf_token()}}">
+        <button class="btn btn-success">Submit</button>
+        </form>
+{% endblock%}

@@ -1,0 +1,17 @@
+{% extends 'products/error.html'%}
+
+{% block category %}
+      <span class="display-6">Checkout</h2>
+{% endblock %}
+
+{% block items %}
+    <h2 class="display-6">Oops and error occcured</h2>
+{% endblock %}
+
+{% block items2 %}
+    <p>There was an error in processing your checkout</p>
+{% endblock %}
+
+{% block items3 %}
+    <img src="{{url_for('static',filename='imagepage1/checkouterror.png')}}" alt="checkout error" class="img-fluid">
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'admin/admintemplate.html'%}
+
+{% block table %}
+
+<thead>
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">Product name</th>
+      <th scope="col">Image</th>
+      <th scope="col">Description</th>
+      <th scope="col">Category</th>
+      <th scope="col">Vendor</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Date Posted</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i,j in prod2 %}
+    <tr>
+      <td>{{loop.index}}</td>
+      <td>{{i.product_name}}</td>
+      <td><img src="{{url_for('static', filename='/uploads/'+i.product_img)}}" width="200"></td>
+      <td>{{i.product_description}}</td>
+      <td>{{j.category_name}}</td>
+      <td>{{i.pvendview.vendor_name}}</td>
+      <td>{{i.price}}</td>
+      <td>{{i.quantity}}</td>
+      <td>{{i.datereg.strftime('%d %B %Y')}} {{i.datereg.strftime('%I:%M%p')}}</td>
+      <td>
+          <a href="/delete/product/{{i.productid}}" class="btn btn-danger d-inline-block" onclick="return confirm('Do you really want to delete this item?')"><i class="fa-solid fa-trash-can"></i> Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+
+{% endblock%}

@@ -1,0 +1,250 @@
+<!Doctype html>
+<html lang="en">
+	<head>
+		<title>Haadu | Shop</title>
+		<meta charset = "UTF-8">
+		<meta name = "viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit = no">
+		<link href = "{{url_for('static',filename='css/bootstrap.css')}}" rel = "stylesheet" type = "text/css">
+		<link href = "{{url_for('static',filename='fontawesome/css/all.css')}}" rel = "stylesheet" type = "text/css">
+		<link href = "{{url_for('static',filename='stylesheet.css')}}" rel = "stylesheet" type = "text/css">
+
+	</head>
+	<body>
+		<div class="container-fluid">
+
+			{% include 'products/navbar.html'%}
+
+            <div class="row p-lg-5 d-flex justify-content-center">
+                <div class="col-12 col-lg-2">
+                    <div class="col-12">
+                        <div class="bgorange p-3">
+                            <i class="fa-solid fa-ellipsis d-inline-block me-2 white"></i>
+                            <span class="text-white d-inline-block ">Catergories</span>
+                        </div>
+                        <div class="col-12">
+							{% for i in category%}
+                            <div class="p-1 bg-white"><i class="fa-solid fa-up-right-from-square text-success me-1"></i><a href="/products/category/{{i.categoryid}}"class="d-inline-block">{{i.category_name}}</a></div>
+                            {%endfor%}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-7">
+                    <a href="#"><img src="{{url_for('static',filename='imagepage1/salebanner.gif')}}" alt="sales banner" class="img-fluid"></a>
+                </div>
+                <div class="d-none d-lg-block col-lg-2">
+                    <div class = "mb-4">
+                        <img src="{{url_for('static',filename='imagepage1/sales.gif')}}" alt="sales gif" class="img-fluid">
+                    </div>
+                    <div>
+                        <img src="{{url_for('static',filename='imagepage1/logistics.gif')}}" alt="logistics gif" class="img-fluid">
+                    </div> 
+                </div>
+            </div>
+
+			<div class="row p-3">
+				<div><h2 class="display-6 text-success">Shop by Categories</h2></div>
+				{% for i in category%}
+				<div id="{{i.categoryid}}"class="col-lg-2 col-6 card pt-2" height="200" width="200">
+					<a href="/products/category/{{i.categoryid}}" class="text-center"><img src="{{url_for('static',filename='category/'+i.category_img)}}" alt="" height="100"></a>
+					<h5 class='card-title lead text-success text-center'><a href="/products/category/{{i.categoryid}}">{{i.category_name}}</a></h5>
+				</div>
+			
+				{% endfor %}
+			</div>
+			<div class="row px-5">
+			{% block body %}
+				
+			{%endblock%}
+			
+				
+			<div class="row">
+				<div class="col p-3 bgorange my-3">
+					<h5 class="text-center text-white">Recently Posted</h5>
+				</div>
+			</div>
+			
+			
+			<!-- row for Top sellers of the month -->
+			<!-- card-img-top -->
+					<div class="row mt-5 px-5">
+						{%for i,j in prod%}
+						
+							<div class="col-12 col-md-4 col-lg-3 bg-light p-2 my-3">
+								<div height ="200" width="300">
+		
+									<a href="/product/view/{{i.productid}}"><img src="{{url_for('static', filename='uploads/'+i.product_img)}}"  alt="{{i.product_name}}" class="img-fluid"></a>
+								</div>	
+								<div class="bg-light">
+									<div class="col">
+										<!-- <a href="/product/vendor/{{i.pvendview.vendorid}}"><span class = "orange d-block">{{i.pvendview.vendor_name}}</span> More products in this vendor</a>
+										<a href="/products/category/{{j.categoryid}}"><span class = "orange d-block">{{j.category_name}}</span> More products in this category</a> -->
+										<a href="/product/view/{{i.productid}}" class="text-dark"><span class="d-inline-block lead"><b>{{i.product_name}}</b></span> </a>
+										<div class="">
+											<div>
+												<a href="/product/view/{{i.productid}}"><span class="d-inline-block text-success h6">&#x20A6; {{"{:,.2f}".format(i.price)}}</span></a>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						{%endfor%}	
+					</div>
+
+					<!-- Vendors -->
+					<div class="row">
+						<div class="col bgorange mb-3">
+							<h3 class="text-white">Shop from your favourite vendor</h3>
+						</div>
+					</div>
+
+					<div class="row">
+						{% for i in vendy %}
+						<div id="{{i.vendorid}}"class="col-lg-2 col-12 col-md-6 card pt-2" height="200" width="200">
+							<a href="/product/vendor/{{i.vendorid}}" class="d-inline-block text-center"><img src="{{url_for('static', filename='uploads/'+i.vendor_img)}}" alt="{{i.vendor_name}}" class="img-fluid"></a>
+							<h5 class='card-title lead text-success text-center'><a href="/product/vendor/{{i.vendorid}}">{{i.vendor_name}}</a></h5>
+						</div>
+						{% endfor %}
+					</div>
+				
+
+			<!-- Back to top -->
+
+			<div class ="row">
+					<a href="#" class="btn text-white form-control bgorange mt-3">Back to top</a>
+			</div>
+
+			<!-- Do you want to catch us with the latest deals -->
+
+			<div class="row bgfooter">
+
+				<!-- Do you want to catch us with the latest deals - col-->
+				<div class="col mb-3">
+
+					<!-- Do you want to catch us with the latest deals -->
+					<div class="col">
+						<h3 class="text-white text-center my-5">Do you want to catch us with the latest deals</h3>
+					</div>
+
+					<!-- subscribe -->
+					<div class="col d-md-flex justify-content-center">
+						<div class="col-md-4 d-md-flex justify-content-center">
+							<div class="col me-2">
+								<input type="email" name="email" id="emailaddress" class="form-control bg-secondary">
+							</div>
+							<div class="col">	
+								<button type="button" class="btn btn-success">Subscribe</button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+			<!-- Footer -->
+
+			<div class="row bgfooter">
+				<!-- footer col -->
+				<div class="col d-md-flex mb-5">
+
+					<!-- footer col 2 -->
+
+					<div class="col">
+						<div class="col"><img src="{{url_for('static',filename='imagepage1/haadu2.png')}}" alt = "Logo" class="img-fluid"></div>
+					</div>
+
+					<!-- footer col 2 -->
+					<div class="col d-flex">
+						<div class="col">
+							<h6 class="mb-3 text-white">Support</h6>
+							<a href="#" class="d-block orange mb-2">Contact Us</a>
+							<a href="#" class="d-block orange mb-2">FAQs</a>
+							<a href="#" class="d-block orange mb-2">Shipping & Returns</a>
+
+						</div>
+						<div class="col">
+							<h6 class="mb-3 text-white">Shop</h6>
+							<a href="#" class="d-block orange mb-2">Foods and Vegetable</a>
+							<a href="#" class="d-block orange mb-2">Live Stock</a>
+							<a href="#" class="d-block orange mb-2">Farming Tools</a>
+						</div>
+					</div>
+
+					<!-- footer col 3 -->
+
+					<div class="col d-flex">
+						<div class="col">
+							<h6 class="mb-3 text-white">Company</h6>
+							<a href="#" class="d-block orange mb-2">About us</a>
+							<a href="#" class="d-block orange mb-2">Careers</a>
+							<a href="#" class="d-block orange mb-2">Terms and Conditions</a>
+							<a href="#" class="d-block orange mb-2">Privacy and Cookies policy</a>
+						</div>
+						<div class="col">
+							<h6 class="mb-3 text-white">Contact</h6>
+							<a href="#" class="d-block orange mb-2">+1 234 5677</a>
+							<a href="#" class="d-block orange mb-2">+1 234 5667</a>
+							<a href="#" class="d-block orange mb-2">help@haadu.com</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- all rights reserved -->
+
+			<div class="row">
+				<div class="col bg-secondary p-3">
+					<p class="text-center text-white">Designed by Omogbare Ekpenga &copy; 2022</p>
+				</div>
+			</div>
+
+			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasLogin" aria-labelledby="offcanvasTopLabel">
+			  <div class="offcanvas-header">
+			    <h5 id="offcanvasTopLabel">Login form</h5>
+			    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			  </div>
+			  <div class="offcanvas-body">
+			    <div class="mb-5">
+			    	<h6>User Login</h6>
+			    	<div class="mb-3">
+			    		<input type="text" name="username_1" id="user_name" class="form-control" placeholder="Enter username">
+			    	</div>
+			    	<div class="mb-3">
+			    		<input type="password" name="password_1" id="pswrd" class="form-control" placeholder="Password">
+			    	</div>
+			    	<div class="mb-3">
+			    		<a href="useraccount.html" class="btn bgorange form-control text-white">Login</a>
+			    	</div>
+			    </div>
+			    <div>
+			    	<h6>Vendor Login</h6>
+			    	<div class="mb-3">
+			    		<input type="text" name="username_2" id="user_name1" class="form-control" placeholder="Enter username">
+			    	</div>
+			    	<div class="mb-3">
+			    		<input type="password" name="password_2" id="pswrd2" class="form-control" placeholder="Password">
+			    	</div>
+			    	<div class="mb-3">
+			    		<a  href = "vendor.html"class="btn bgorange form-control text-white">Login</a>
+			    	</div>
+			    </div>
+			  </div>
+			</div>
+
+		</div>
+		<!-- JS Files *best practice is to add your files yourself. For the CDN route, you'll be required to have internet connection. The popper js is in the bundle.js file.*-->
+		<script type="text/javascript" src="{{url_for('static',filename='jquery.3.6.0.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='jquery.3.6.0.min.js')}}"></script>
+		<script src="{{url_for('static',filename='vendor/jquery/jquery.min.js')}}"></script>
+		<script src="{{url_for('static',filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/bootstrap.bundle.js')}}"></script>
+		<script type="text/javascript" language="javascript">
+			$(document).ready(function(){
+				$().click(function(){
+
+				});
+			});
+		</script>
+	</body>
+</html>

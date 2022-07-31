@@ -1,0 +1,39 @@
+{% extends 'products/vendor_shop1.html'%}
+{% block img%}
+	<img src="{{url_for('static', filename='uploads/'+vend_view1.vendor_img)}}" height="300" width="300" style="border-radius: 50%; border: 2px solid lightgray;">
+{%endblock%}
+                    
+{% block name %}
+
+{%endblock%}
+                
+
+<!-- {% for i,j in vend_view%}
+{{i.pvendview.vendor_name}} -->
+
+<!-- {%endfor%} -->
+
+			
+{% block vendorname %}
+
+{{vend_view1.vendor_name}}
+
+{%endblock%}
+
+{% block product%}
+{% for i,j in vend_view%}
+<div class="col-6 col-md-4 col-lg-2">
+	<img src="{{url_for('static', filename='uploads/'+i.product_img)}}" class="card-img-top" alt="{{i.product_name}}">
+		<div class="card-body">
+			<div class="col text-center">
+			    <span class = "orange d-block"><a href="/products/category/{{j.categoryid}}">{{jcategory_name}} || see more from this category</a></span>
+				<span class="d-block lead">{{i.product_name}}</span>
+				<span class="d-block text-success h6">&#x20A6; {{"{:,.2f}".format(i.price)}}</span>
+                <small>price per KG where applicable</small>
+				<a href="/product/view/{{i.productid}}" class="btn text-white bgorange mt-3 form-control">Shop</a>
+			</div>   
+		</div>
+</div>
+{%endfor%}
+{% endblock %}
+				

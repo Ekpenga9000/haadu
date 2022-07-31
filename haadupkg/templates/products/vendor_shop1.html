@@ -1,0 +1,127 @@
+<!Doctype html>
+<html lang="en">
+	<head>
+		<title>Haadu | Vendor{%block name%} {%endblock%}</title>
+		<meta charset = "UTF-8">
+		<meta name = "viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit = no">
+		<link href = "{{url_for('static',filename='css/bootstrap.css')}}" rel = "stylesheet" type = "text/css">
+		<link href = "{{url_for('static',filename='fontawesome/css/all.css')}}" rel = "stylesheet" type = "text/css">
+		<link href = "{{url_for('static',filename='stylesheet.css')}}" rel = "stylesheet" type = "text/css">
+
+	</head>
+	<body>
+		<div class="container-fluid">
+
+			{% include 'products/navbar.html'%}
+
+			<!-- First quick shop section -->
+
+			<div class="row mb-3">
+				<div class="col bg-info d-flex justify-content-center">
+                    <div height="300" width="300" style="border-radius:50%;" class="pt-5 pb-2">
+                        {% block img%}
+						
+                        {%endblock%}
+                    </div>
+
+                </div>
+			</div>
+
+			<div class="row mb-3">
+				<div class="col vh20 d-flex align-items-center justify-content-center">
+
+				<h2 class="orange">
+                    {% block vendorname %}
+					
+                    {%endblock%}
+				</h2>
+				
+				</div>
+			</div>
+
+			
+
+			<!-- row for Top sellers of the month -->
+					<div class="row px-5">
+                    {% block product%}
+					
+                    {% endblock %}
+					</div>
+
+			<!-- Discover more .. link -->
+
+			<div class="row">
+				<div class="col my-5 d-flex justify-content-center mb-3">
+					<a href="{{url_for('shop')}}" class="btn btn-lg btn-outline-success form-control d-inline-block">Explore more...</a>
+				</div>
+			</div>
+
+			<!-- Hunt for products -->
+				
+			<div class="col vh50 d-flex align-items-center justify-content-center">
+				<div>
+					<div class="col mt-2 pt-2 text-center">
+						<!-- <h2 class="orange">
+							Discover products with up to <span class="text-success">80%</span> discount!
+						</h2> -->
+					<a href="{{url_for('shop')}}"><img src="{{url_for('static', filename='imagepage1/shopbanner2.png')}}" alt="shopbanner2" class="img-fluid"></a>
+					</div>
+					<div class="col d-flex justify-content-center">
+						<!-- <a href="{{url_for('shop')}}" class="btn btn-lg btn-outline-success d-inline-block">Discover more -->
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Back to top -->
+
+			<div class ="row bgorange mt-2">
+				<div class="col">
+					<a href="#" class="btn text-white form-control bgorange mt-3">Back to top</a>
+				</div>
+			</div>
+
+			
+
+			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasLogin" aria-labelledby="offcanvasTopLabel">
+			  <div class="offcanvas-header">
+			    <h5 id="offcanvasTopLabel">Login form</h5>
+			    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			  </div>
+			  <div class="offcanvas-body">
+			    <div class="mb-5">
+			    	<h6>User Login</h6>
+			    	<div class="mb-3">
+			    		<input type="text" name="username_1" id="user_name" class="form-control" placeholder="Enter username">
+			    	</div>
+			    	<div class="mb-3">
+			    		<input type="password" name="password_1" id="pswrd" class="form-control" placeholder="Password">
+			    	</div>
+			    	<div class="mb-3">
+			    		<a href="#" class="btn bgorange form-control text-white">Login</a>
+			    	</div>
+			    </div>
+			    <div>
+			    	<h6>Vendor Login</h6>
+			    	<div class="mb-3">
+			    		<input type="text" name="username_2" id="user_name1" class="form-control" placeholder="Enter username">
+			    	</div>
+			    	<div class="mb-3">
+			    		<input type="password" name="password_2" id="pswrd2" class="form-control" placeholder="Password">
+			    	</div>
+			    	<div class="mb-3">
+			    		<a  href = "vendor.html"class="btn bgorange form-control text-white">Login</a>
+			    	</div>
+			    </div>
+			  </div>
+			</div>
+		</div>
+		{% include 'products/footer.html'%}
+		<!-- JS Files *best practice is to add your files yourself. For the CDN route, you'll be required to have internet connection. The popper js is in the bundle.js file.*-->
+
+		<script type="text/javascript" language="javascript">
+			
+
+		</script>
+	</body>
+</html>

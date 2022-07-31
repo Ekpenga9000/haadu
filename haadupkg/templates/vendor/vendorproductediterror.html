@@ -1,0 +1,17 @@
+{% extends 'vendor/vendorproducterror1.html'%}
+
+{% block category %}
+      <span class="display-6">Delete Category</h2>
+{% endblock %}
+
+{% block items %}
+    <h2 class="display-6">Product change error</h2>
+{% endblock %}
+
+{% block items2 %}
+    <p>Category cannot be deleted because products have been registered </p>
+{% endblock %}
+
+{% block items3 %}
+    <img src="{{url_for('static',filename='imagepage1/checkouterror.png')}}" alt="checkout error" class="img-fluid">
+{% endblock %}

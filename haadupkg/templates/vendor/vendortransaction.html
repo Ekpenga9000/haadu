@@ -1,0 +1,23 @@
+{% extends 'vendor/vendortemplate.html'%}
+
+{% block table %}
+<div class="col d-flex justify-content-between mb-3">
+    <div class="col"><h2 class="display-6 text-success">Transaction history</h2></div>
+    <div class="col"><h2 class="display-6 text-success">Total amount in sales: <span style="font-weight:bold;">&#x20A6;{{"{:,.2f}".format(total)}}</span></h2></div>
+</div>
+<hr>
+
+{% for py,or,od,pr,ve in payment_deets %}
+<div>
+  <p>Payment Referrence Number: {{py.paymentref}}</p>
+  <p>Payment Mode: {{py.paymentmode}}</p>
+  <p>Payment Date: {{py.paymentdate.strftime('%d %B %Y')}} {{py.paymentdate.strftime('%I:%M%p')}}</p>
+  <p>Product Name: {{pr.product_name}}</p>
+  <p>Price: &#x20A6;{{"{:,.2f}".format(od.price)}}</p>
+  <p>Quantity: {{od.quantity}}</p>
+  <p>Order ref Number: {{or.orderref}}</p>
+</div>
+
+<hr>
+{% endfor %}
+{% endblock%}

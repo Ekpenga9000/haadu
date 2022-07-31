@@ -1,0 +1,72 @@
+{% extends 'vendor/vendortemplate.html'%}
+
+{% block table %}
+
+{% set msg = get_flashed_messages()%}
+{% if msg %}
+{% for i in msg %}
+<p class="alert alert-info">{{i}}</p>
+{% endfor %}
+{% endif %}
+
+<div class="col-md-9">
+    <form action="/vendor/add/product" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="productname">Product Name</label>
+            <input type="text" name="productname" id="productname" class="form-control" required>
+        </div> 
+        <div>
+            <label for="productpix">Product image</label>
+            <input type="file" class = "form-control mb-3" name="productpix" id="productpix" required>
+            <small>Images must be (640 x 426) in Dimension</small>
+        </div> 
+        <div>
+            <label for="productdesc">Product Description</label>
+            <textarea name="productdesc" id="productdesc" cols="30" rows="10" class="form-control" required></textarea>
+        </div>  
+        <div class="my-3">
+            <div>
+                <label for="category">Category</label>
+            </div>
+            <!-- <div>
+                <select name="category" id="category" required class="form-select">
+                    <option value="">--Please select a Category--</option>
+                    <option value="1">Vegetables</option>
+                    <option value="2">Grains and Legumes</option>
+                    <option value="3">Other Plant products</option>
+                    <option value="4">Animal products</option>
+                    <option value="5">Poultry Farming</option>
+                    <option value="6">Aquatic Farming</option>
+                    <option value="7">Animal Farming</option>
+                    <option value="8">Manure and fertilizers</option>
+                    <option value="9">Tools and Machinery</option>
+                    <option value="10">Plant Care</option>
+                </select>
+            </div> -->
+
+            <div>
+                <select name="category" id="category" required class="form-select">
+                    <option value="">--Please select a Category--</option>
+                    {% for i in ct%}
+                    <option value="{{i.categoryid}}">{{i.category_name}}</option>
+                    {%endfor%}
+                    
+                </select>
+            </div>
+        </div> 
+        <div>
+            <label for="price">Product Price</label>
+            <input type="number" name="price" id="price" class="form-control" required>
+        </div> 
+        <div class="mb-3">
+            <label for="quantity">Quantity</label>
+            <input type="number" name="quantity" id="quantity" class="form-control" required>
+        </div> 
+           
+        <input type="hidden" name="csrf_token" id="csrf_token" value="{{csrf_token()}}">
+
+    <button class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+{% endblock%}

@@ -1,0 +1,30 @@
+{% extends 'vendor/vendorregpanel.html'%}
+{% block form %}
+<div>
+	<h2 class="text-success">Vendor Login</h2>
+</div>
+{% set msg = get_flashed_messages()%}
+{% if msg %}
+{% for i in msg %}
+<p class="alert alert-success">{{i}}</p>
+{% endfor %}
+{% endif %}
+<div class="col">
+	<form action="/vendor/validate" method="post">
+		<div class="col-lg-12">
+			{{login.username.label}}
+			{{login.username(class_="form-control")}}
+		</div>
+		<div class="col-12">
+			{{login.password.label}}
+			{{login.password(class_="form-control")}}
+		</div>
+		<div class="col-12">
+			{{login.submit(class_="form-control my-3 bgorange text-white")}}
+		</div>
+		{{login.csrf_token}}
+	</form>
+</div>
+{% endblock %}
+					
+			

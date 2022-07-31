@@ -1,0 +1,75 @@
+{% extends 'vendor/vendortemplate.html'%}
+
+{% block table %}
+
+{% set msg = get_flashed_messages()%}
+{% if msg %}
+{% for i in msg %}
+{{i|safe}}
+{% endfor %}
+{% endif %}
+
+<div class="col-md-12 px-5">
+    <h2 class="lead mb-3 text-success text-center">Update your profile photo</h2>
+    {% for i in vdeets %}
+    <div class="d-flex justify-content-center" id="profilepix2">
+            <img src="{{url_for('static', filename='uploads/'+i.vendor_img)}}" alt="" class="img-fluid" style="height:500px; width:500px; border-radius:50%;">  
+    </div>
+    {% endfor %}
+    <div>
+        <form action="/edit/vendor/picture" method="post" enctype="multipart/form-data">
+            <div>
+                <label for="productpix">Profile image</label>
+                <input type="file" class = "form-control mb-3" name="profilepix" id="profilepix"  required>
+                <small>Image dimension must be (640 x 426)</small>
+            </div> 
+
+            <input type="hidden" name="csrf_token" id="csrf_token" value="{{csrf_token()}}">
+
+            <div class="d-flex btn-group">
+                <button class="btn btn-success">Upload</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block custom_script %}
+
+<script type="text/javascript">
+
+    // $(document).ready(function(){
+    //     $('#btnserial').click(function(){
+    //       var myform = document.getElementById('myform')
+    //       var data2send = new FormData(myform)
+
+    //     $.ajax({
+    //         url:"/edit/vendor/picture",
+    //         data:data2send,
+    //         dataType:"json",
+    //         type:"post",
+
+    //         cache:false,
+    //         processData:false,
+    //         contentType:false,
+
+    //         success:function(rsp){
+
+    //                 $("#profilepix2").html(rsp);
+    //                 imglocation = '/static/uploads/'+rsp.filename
+
+    //                 $("#profilepix2").html("<img src ="+imglocation+" alt='Profile picture' width='500'height='500' style='border-radidus:50%'>")
+
+    //                 alert("Image upload successful, please reload page.")
+    //             },
+
+    //             error:function(error){
+    //                 console.log(error)
+    //             }
+
+    //     })
+    //     })
+    // })
+</script>
+{% endblock %}

@@ -1,0 +1,240 @@
+{%extends 'products/productpage.html'%}
+
+{% block cate%}
+{% for i,j in prod_view%}
+{{j.category_name}}
+{%endfor%}
+{%endblock%}
+
+{% block prod %}
+{% for i,j in prod_view%}
+{{i.product_name}}
+
+{%endfor%}
+{%endblock%}
+{% block img %}
+{% for i,j in prod_view %}
+	<img src="{{url_for('static', filename='uploads/'+i.product_img)}}" alt="Chicken" class="img-fluid p-3">
+{%endfor%}
+{%endblock%}
+					
+{%block details%}
+{% for i,j in prod_view %}
+
+	<h5 class="lead text-success"> {{i.product_name}}</h5>
+	<p><span class="orange d-inline-block">CATEGORY:</span> {{j.category_name}}</p>
+	<p><span class="orange d-inline-block">Vendor: </span> <a href="/product/vendor/{{i.pvendview.vendorid}}">{{i.pvendview.vendor_name}}</a> |
+		<a href="/product/vendor/{{i.pvendview.vendorid}}">More from {{i.pvendview.vendor_name}}</a>
+	</p>
+	<p>
+		<i class="fa-solid fa-star orange"></i>
+		<i class="fa-solid fa-star orange"></i>
+		<i class="fa-solid fa-star orange"></i>
+		<i class="fa-solid fa-star orange"></i>
+		<i class="fa-solid fa-star text-secondary"></i>
+	</p>
+{%endfor%}
+{%endblock%}
+
+{% block add %}
+{% for i,j in prod_view %}
+	<div>
+		<div>
+			<small class="orange">Please select the quatity</small>
+			<div class="mt-3 p-2">
+				<button id ="subtraction" type="button" class="btn btn-success disabled"><i class="fa-solid fa-minus text-white"></i></button>
+				<input type="hidden" name="{{i.productid}}" value="{{i.productid}}" id="prod">
+				<input type="hidden" name="csrf_token" id="csrf_token" value="{{csrf_token()}}">
+				<span id="number" class="d-inline-block mx-3">{{cart_num}}</span>
+				<!-- <span id="number" class="d-inline-block mx-3">{{cart_num1}}</span> -->
+				<button id="addition" type="button" class="btn btn-success"><i class="fa-solid fa-plus text-white"></i></button>
+				<button id="add" class="btn bgorange text-white d-inline-block ms-5">
+					Update Cart <i class="fa-solid fa-cart-arrow-down text-white"></i>
+				</button>
+			</div>
+		</div>
+		
+		<small class="d-block orange">Amount would be per KG for where applicable</small>
+		<div class="modal-footer d-flex justify-content-between">
+		</div>
+	</div>
+	<div class="d-flex justify-content-between">
+	<a href = "{{url_for('shop')}}" class="btn btn-light orange d-inline-block">
+		<i class="fa-solid fa-circle-arrow-left orange"></i>
+		Continue shopping</a>
+		
+	<a href ="/user/cart/view" class="btn bgorange text-white d-inline-block" id="proceed">
+		
+		Proceed to Checkout  <i class="fa-solid fa-cart-arrow-down text-white"></i></a>
+
+	</div>
+	<!-- <button type="button" class="btn form-control bgorange" id="add"> 
+		<span class="text-white">ADD TO CART</span>
+		<i class="fa-solid fa-cart-arrow-down text-white"></i>
+	</button> -->
+{% endfor %}
+{% endblock %}
+						
+{% block more %}
+{% for i,j in prod_view %}
+	<h5>&#x20A6; {{"{:,.2f}".format(i.price)}}<span id="price" class="visually-hidden">{{i.price}}</span></h5>
+    <small>price is per KG where applicable </small>
+	<small>
+	+ shipping base fee of &#x20A6;500 within lagos and &#x20A6;100 for every 1kg above 10kg. See 
+	<a href="#">shipping fees and
+	policies for further information.
+	</a>
+	</small>
+{% endfor %}
+{%endblock%}
+						
+{%block third%}
+{% for i,j in prod_view %}
+	<li><span class="orange">Product Line:</span> {{j.category_name}}</li>
+	<li><span class="orange">Name:</span> {{i.product_name}}</li>
+{% endfor %}
+{% for i in vendy %}
+	<li><span class="orange">Production Country:</span> Nigeria</li>
+	<li><span class="orange">State: </span>{{i.stateview.state_name}}</li>
+{% endfor %}
+{%endblock%}
+
+{% block desc %}
+{% for i,j in prod_view %}
+{{i.product_description}}							
+{%endfor%}	
+{%endblock%}	
+
+{% block modal %}
+			
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		var productid = $('#prod').val();
+		var quantity = $('#number').html();
+		var price = $('#price').html();
+		var csrf = $('#csrf_token').val();
+		count = parseInt(quantity);
+
+		
+
+		$('#addition').click(function(){
+			count=count+1;
+			$('#number').html(count);
+
+			if($('#number').html() > 1){
+			$('#subtraction').removeClass('disabled');
+			}else{
+			$('#subtraction').addClass('disabled');
+
+		};
+		});
+
+		$('#subtraction').click(function(){
+			count=count-1;
+			$('#number').html(count);
+			if($('#number').html() > 1){
+			$('#subtraction').removeClass('disabled');
+			}else{
+			$('#subtraction').addClass('disabled');
+		};
+		})
+
+		$('#add').click(function(){
+			var product = $('#prod').val();
+			var qty = $('#number').html();
+			var price = $('#price').html();
+			var csrf = $('#csrf_token').val();
+			var data2send = {"productid":product,"quantity":qty,"price":price,"csrf":csrf};
+
+			$.ajax({
+				url:"{{url_for('add_cart')}}",
+				data: data2send,
+				type:"get",
+				dataType:"json",
+				success:function(rsp){
+					// alert(rsp.feedback);
+					document.getElementById("number").innerHTML = rsp.cart_num;
+					document.getElementById("cart").innerHTML = rsp.cart_num1;
+					// location.reload()
+				},
+				error:function(error_msg){
+					console.log(error_msg)
+					alert("Did not go through")
+				}
+			});
+		});
+
+	});
+	// $(document).ready(function(){
+	// 	var plus = document.getElementById("addition");
+	// 	var minus = document.getElementById("subtraction");
+	// 	var content = document.getElementById("number").innerHTML;
+	// 	var proceed = document.getElementById("proceed")
+		
+
+	// 		$('#addition').click(function(){
+				
+	// 			if(content >= 1){
+	// 				$('.dis').removeClass('disabled')
+	// 			}else(
+	// 				$('.dis').addClass('disabled')
+	// 			);
+	// 			var qty = $('#number').html();
+	// 			var prod = $('#prod').val();
+	// 			var price = $('#price').html();
+	// 			var csrf = $('#csrf_token').val();
+	// 			var data2send = {"prodid":prod,"price":price,"quantity":qty,"csrf":csrf};
+	// 			$.ajax({
+	// 					url:"/add_num",
+	// 					data:data2send,
+	// 					type:"get",
+	// 					dataType:"json",
+	// 					success:function(server_response){
+	// 						alert("An Item has been added to your cart");
+	// 						document.getElementById("number").innerHTML = server_response.cart_num;
+	// 						document.getElementById("cart").innerHTML = server_response.cart_num1;
+
+	// 					},
+	// 					error:function(error_msg){
+	// 					 	alert("Not done")
+	// 						console.log(error_msg)
+	// 					}
+	// 			});
+	// 		});
+
+	// 		$('#subtraction').click(function(){
+
+	// 			if(content > 1){
+	// 				$('.dis').removeClass('disabled')
+	// 			}else(
+	// 				$('.dis').addClass('disabled')
+	// 			);
+				
+	// 			var prod = $('#prod').val(); //this is the product id
+	// 			var csrf = $('#csrf_token').val();
+	// 			var data2send = {"prodid":prod,"csrf":csrf};
+	// 			$.ajax({
+	// 					url:"/removenum",
+	// 					data:data2send,
+	// 					type:"get",
+	// 					dataType:"json",
+	// 					success:function(server_response){
+	// 						alert(server_response.response1);
+	// 						document.getElementById("number").innerHTML = server_response.cart_num;
+	// 						document.getElementById("cart").innerHTML = server_response.cart_num1;
+	// 					},
+	// 					error:function(error_msg){
+	// 					 	alert("This item is not in your cart")
+	// 						console.log(error_msg)
+	// 					}
+	// 			});
+	// 		})
+	// 	});
+		
+
+	</script>
+{% endblock %}

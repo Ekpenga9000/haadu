@@ -1,0 +1,21 @@
+{% extends 'products/error.html' %}
+{% block title %}
+    404 error
+{% endblock %}
+
+{% block category %} Page not found {% endblock %}
+
+{% block items %}
+    We could not find the page you are looking for
+{% endblock %}
+
+{% block items2 %}
+    The page you are looking for could not be found. 
+    Please click the button below to return to our homepage.
+{% endblock %}
+
+{% block items3 %}
+    <div class="col">
+        <img src="{{url_for('static',filename='imagepage1/error404.png')}}" alt="pugsy">
+    </div>
+{% endblock %}

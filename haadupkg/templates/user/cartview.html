@@ -1,0 +1,49 @@
+{% extends 'user/useraccount.html'%}
+
+{% block table%}
+	<div>
+		<h1 class="display-6 text-success">My Cart</h1>
+	</div>
+	{% set msg = get_flashed_messages()%}
+	{% if msg %}
+	<span class="alert alert-danger">{{msg[0]}}</span>
+	{% endif %}
+
+	{% if cart_deets %}
+	{% for i in cart_deets%}
+		<hr>
+		<div class="d-flex my-3">
+			<div class="me-5">
+				<img src="{{url_for('static', filename='uploads/'+i.cart_product.product_img)}}"  alt="{{i.product_name}}" height="100" width="150">
+			</div>
+			<div>
+				<p class="lead">Product name: {{i.cart_product.product_name}}</p>
+				<p>Quantity: {{i.quantity}}</p>
+				<p>Amount: &#x20A6;{{"{:,.2f}".format(i.amount)}}</p>
+				<a href="/product/detail/{{i.productid}}" class="btn btn-success">Update quantity</a>  <a href="/product/cart_delete/{{i.productid}}" class="btn btn-danger" onclick="return confirm('Do you want to remove this item from your cart?')"><i class="fa-solid fa-trash-can"></i> Remove Item</a>
+
+			</div>	
+		</div>
+	{% endfor %}
+	<hr>
+	<div class="col d-flex justify-content-around">
+		<div>
+			<p class="lead"><b>Total amount: &#x20A6; {{"{:,.2f}".format(amt)}}</b></p>
+		</div>
+		<div>
+			<a href="/cart/empty" class="btn btn-danger text-white" onclick="return confirm('Do you want to empty your cart?')"><i class="fa-solid fa-x"></i> Empty Cart</a>   <a href="/user/pending_order/view" class="btn bgorange text-white" onclick="return confirm('Do you want to proceed to checkout?')">Proceed to Checkout <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+		</div>
+	</div>
+	{% else %}
+	<div class="d-flex justify-content-center my-5">
+		<div class="col-6 text-center">
+			<h1 class="lead">Your cart is currently Empty</h1>
+			<a href="{{url_for('shop')}}" class="btn bgorange text-white">Go to shop</a>
+		</div>	
+	</div>
+	{% endif %}
+{%endblock%}	
+
+{% block custom_script %}
+
+{% endblock %}

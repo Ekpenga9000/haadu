@@ -1,0 +1,35 @@
+{% extends 'user/userregpanel.html'%}
+
+{% block form %}
+
+	<div class="col-md-8 mt-5">
+		<div>
+			<h2 class="orange">User Signin form</h2>
+		</div>
+
+		{% set msg = get_flashed_messages()%}
+		{% if msg%}
+		<p class="alert alert-danger">{{msg[0]}}</p>
+		{%endif%}
+		<div class="col mb-5">
+			<form action="/user/login" method="post">
+			<div class="col-lg-12">
+				{{login_form.username.label(class_="form-label")}}
+				{{login_form.username(class_="form-control")}}
+			</div>
+			<div class="col-lg-12 mb-3">
+				{{login_form.password.label(class_="form-label")}}
+				{{login_form.password(class_="form-control")}}
+			</div>
+				{{login_form.csrf_token}}
+	
+				
+			<div class="col-12">
+				{{login_form.submit(class_="btn bgorange form-control text-white")}}
+			</div>
+			</form>
+		</div>
+	</div>
+         
+{% endblock %}
+

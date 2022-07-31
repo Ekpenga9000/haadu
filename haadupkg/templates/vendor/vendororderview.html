@@ -1,0 +1,34 @@
+{% extends 'vendor/vendortemplate.html'%}
+
+{% block table %}
+
+<thead>
+    <tr>
+      <th scope="col">Product name</th>
+      <th scope="col">Product Image</th>
+      <th scope="col">order Number</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Order Date</th>
+      <th scope="col">Payment Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Remember to add the product img so the vendor can view the product.  -->
+    {% for od,or,pr,ve,py in ord_deets %}
+    <tr>
+        <td>{{pr.product_name}}</td>
+        <td><img src="{{url_for('static', filename='uploads/'+pr.product_img)}}" width="200"></td>
+        <td>{{or.orderref}}</td>
+        <td>{{od.quantity}}</td>
+        <td>{{or.orderdate.strftime('%d %B %Y')}} {{or.orderdate.strftime('%I:%M%p')}}</td>
+        <td>{{py.paymentstatus}}</td>
+        <td>
+            <a href="/vendor/edit/order/{{or.orderid}}" class="btn btn-primary d-inline-block" onclick="return confirm('Do you want to act on this Order?')"><i class="fa-solid fa-pen-to-square"></i> Action</a>
+
+        </td> 
+    </tr>
+   {% endfor %}
+  </tbody>
+
+{% endblock%}

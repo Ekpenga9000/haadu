@@ -1,0 +1,43 @@
+{% extends 'admin/admintemplate.html'%}
+
+{% block table %}
+
+<thead>
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">orderdate</th>
+      <th scope="col">orderstatus</th>
+      <th scope="col">order No</th>
+      <th scope="col">shippingaddress</th>
+      <th scope="col">shippingdate</th>
+      <th scope="col">shippingfee</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Payment mode</th>
+      <th scope="col">Payment Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i,j,k in ord %}
+    <tr>
+     
+      <td>{{loop.index}}</td>
+      <td>{{i.orderdate.strftime('%d %B %Y')}} {{i.orderdate.strftime('%I:%M%p')}}</td>
+      <td>{{i.orderstatus}}</td>
+      <td>{{i.orderref}}</td>
+      <td>{{i.shippingaddress}}</td>
+      <td>{{i.shippingdate}}</td>
+      <td>{{i.shippingfee}}</td>
+      <td>{{j.firstname}} {{j.lastname}}</td>
+      <td>{{k.paymentmode}}</td>
+      <td>{{k.paymentstatus}}</td>
+      <td>
+
+        <a href="/edit/orders/{{i.orderid}}" class="btn btn-primary d-inline-block" onclick="return confirm('Do you want to act on this order?')"><i class="fa-solid fa-pen-to-square"></i> Action</a>
+      </td>
+    
+    </tr>
+    {% endfor %}
+  </tbody>
+
+{% endblock%}

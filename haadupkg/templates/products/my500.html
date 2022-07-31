@@ -1,0 +1,19 @@
+{% extends 'products/error.html' %}
+{% block title %}
+    500 error
+{% endblock %}
+
+{% block items %}
+    Whoops!!!
+{% endblock %}
+
+{% block items2 %}
+    It seems pugsy is playing with the cables again.
+    Please click the button below to return to the homepage while we sort this out.
+{% endblock %}
+
+{% block items3 %}
+    <div class="col">
+        <img src="{{url_for('static',filename='imagepage1/error500.gif')}}" alt="pugsy">
+    </div>
+{% endblock %}

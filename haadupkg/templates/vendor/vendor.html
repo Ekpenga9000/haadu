@@ -1,0 +1,9 @@
+{% extends 'vendor/vendortemplate.html'%}
+{% block table%}
+{% for i in vdeets %}
+<h1 class="display-3 text-success"> Welcome, {{i.vendor_name}}</h1>
+{% endfor %}
+<div class="col-md-12">
+	<img src="{{url_for('static',filename='imagepage1/farmer.gif')}}" alt="ADMIN GIF" class="img-fluid">
+</div>					  
+{%endblock%}
