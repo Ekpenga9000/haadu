@@ -707,7 +707,7 @@ def payment_feedback():
         return render_template("user/congratulations.html",loggedin=loggedin,ord=ord,ord1=ord1,ord2=ord2,order=order,ord3=ord3,trxn_deets=trxn_deets)
         # or direct the user to their dashboard where they would see their transaction history as Paid
     else:
-        pay = Payments(userid=loggedin,orderid=1,amount=actual_amt,paymentstatus='Failed')
+        pay = Payments(userid=log,orderid=1,amount=actual_amt,paymentstatus='Failed')
         db.session.add(pay)
         db.session.commit()
         return "Failed, try again"
