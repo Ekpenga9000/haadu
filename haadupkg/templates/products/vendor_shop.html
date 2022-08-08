@@ -22,15 +22,20 @@
 
 {% block product%}
 {% for i,j in vend_view%}
-<div class="col-6 col-md-4 col-lg-2">
+<div class="col-6 col-md-4 col-lg-2 shadow-sm me-2">
 	<img src="{{url_for('static', filename='uploads/'+i.product_img)}}" class="card-img-top" alt="{{i.product_name}}">
 		<div class="card-body">
 			<div class="col text-center">
-			    <span class = "orange d-block"><a href="/products/category/{{j.categoryid}}">{{jcategory_name}} || see more from this category</a></span>
-				<span class="d-block lead">{{i.product_name}}</span>
-				<span class="d-block text-success h6">&#x20A6; {{"{:,.2f}".format(i.price)}}</span>
-                <small>price per KG where applicable</small>
-				<a href="/product/view/{{i.productid}}" class="btn text-white bgorange mt-3 form-control">Shop</a>
+			    <a href="/products/category/{{j.categoryid}}"><span class = "orange d-block text-truncate">{{j.category_name}} || see more from this category</span></a>
+				<span class="d-block lead text-truncate">{{i.product_name}}</span>
+				<div class="">
+					<div>
+						<a href="/product/view/{{i.productid}}"><span class="text-success h6">&#x20A6; {{"{:,.2f}".format(i.price)}}</span></a>
+					</div>
+					<!-- <div>
+						<a href="/product/view/{{i.productid}}" class="px-3 py-1 rounded text-white bgorange mt-3">Shop</a>
+					</div> -->
+				</div>
 			</div>   
 		</div>
 </div>

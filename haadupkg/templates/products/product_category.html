@@ -5,29 +5,27 @@
 <!-- <h2 class="lead text-white">Catergories>>>{{cate_name}}</h2> -->
 {% for i in prod_cate %}
   
-<div class="col-6 col-md-4 col-lg-2 bg-white pt-2">
-    <div style="height: 200px; width: 250px;">
-      <img src="{{url_for('static', filename='uploads/'+i.product_img)}}" alt="{{i.product_name}}" style="height: 200px; width:100%; object-fit:contain;">
-    </div>
-    <div class="">
-      <div class="col text-center">
-          <a href="/product/vendor/{{i.vendorid}}"><small class = "d-block small">Posted by {{i.pvendview.vendor_name}} | More products from this vendor</small></a>
-          <span class="d-block orange">{{i.product_name}}</span>
-          <span class="d-block text-success h6">&#x20A6; {{"{:,.2f}".format(i.price)}} <span class="small">per KG where applicable</span></span>
-          <a href="/product/view/{{i.productid}}" class="btn text-white bgorange mt-3 form-control">Shop</a>
-      </div> 
-    </div>
+<div class="col-6 col-md-4 col-lg-2 bg-white pt-2 shadow-sm py-3 me-2">
+  <div>
+    <img src="{{url_for('static', filename='uploads/'+i.product_img)}}" alt="{{i.product_name}}" class="img-fluid">
   </div>
+  <div>
+    <div class="col text-center">
+        <a href="/product/vendor/{{i.vendorid}}"><small class = "d-block small text-truncate">Posted by {{i.pvendview.vendor_name}} | More products from this vendor</small></a>
+        <span class="d-block orange text-truncate">{{i.product_name}}</span>
+        <div class="d-flex justify-content-between mt-2">
+          <div>
+            <span class="text-success h6">&#x20A6; {{"{:,.2f}".format(i.price)}}</span>
+          </div>
+          <div>
+            <a href="/product/view/{{i.productid}}" class="px-3 py-1 text-white rounded bgorange">Shop</a>
+          </div>
+        </div>  
+    </div> 
+  </div>
+</div>
 {% endfor %}
 {%endblock%}
 
 {% block script%}
-  <script type="text/javascript">
-    // $(document).ready(function(){
-    //   let img = document.getElementsByClass('immg').innerHTML()
-
-    //   document.getElementById('{{i.productid}}').style.backgroundImage = 'url("static/uploads/?' + img + '")'
-     
-    // });
-  </script>
 {%endblock%}

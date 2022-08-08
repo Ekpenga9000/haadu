@@ -190,11 +190,10 @@ def nav_bar():
 @app.route("/user/pending_order/view")
 def pending_order():
     log = session.get('user')
-
     #The aim of route is to provide the products that have been added to cart. There will be a modify button on each product to take them back to the product details page. 
     
     if log != None:
-         
+        
         log1 = User.query.filter(User.userid == log).first()
 
         ord1 = Orders.query.filter(Orders.userid==log).filter(or_(Orders.orderstatus=="Processing",Orders.orderstatus=="Pending")).count()
@@ -524,8 +523,60 @@ def confirmation():
     if log != None:
 
         address = request.form.get("shipping_addy")
+        state = request.form.get("state")
+        if address == None or state == None or address == "None":
+            flash("Please ensure that your details are filled out.")
+            return redirect('/user/pending_order/view')
 
-        if address != None:
+            # #getting the amount 
+
+            # cart_deets = Cart.query.filter(Cart.userid==log).all()
+        
+            # amt1 = []
+            
+            # for i in cart_deets:
+            #     amt1.append(i.amount)
+
+            # amt = sum(amt1)
+
+            # prod_selected = []
+
+            # for i in cart_deets:
+            #     prod_selected.append(i.productid)
+
+            # #Adding to the order table.
+
+            # add_ord = Orders(orderref=ref,orderamt=amt,orderstatus="Pending", shippingaddress=address,shippingfee=500,userid=log)
+            
+            # db.session.add(add_ord)
+            # db.session.commit()
+            # session['orderref'] = ref
+            # #Adding to the order-details table. 
+
+            # order = add_ord.orderid # Get the orderid
+            # for i in prod_selected: #get the product id 
+            #     qty = get_quantity(i)
+            #     prod_price = get_amount(i)
+
+            #     ord_det = Order_details(orderid=order,productid=i,price=prod_price,quantity=qty)
+
+            #     db.session.add(ord_det)
+            
+            # #adding to the payment table. 
+            # p = Payments(userid=log,orderid=order,paymentmode="Pending",amount=amt,paymentref=ref,paymentstatus='Pending',paymentfeedback="Pending")
+            # db.session.add(p)
+
+            #     #commit all changes on all tables (orders,order_details,payment) to the db
+            # db.session.commit()
+
+            # for i in cart_deets:
+            #     db.session.delete(i)
+            # db.session.commit()
+
+            # return redirect('/initialize_paystack') #display all the things we captured back to the user on this page for confirmation b4 we tell him to pay
+        else:
+            # flash("Please ensure that your details are filled out.")
+            # return redirect('/user/pending_order/view')
 
             #getting the amount 
 
@@ -573,10 +624,6 @@ def confirmation():
             db.session.commit()
 
             return redirect('/initialize_paystack') #display all the things we captured back to the user on this page for confirmation b4 we tell him to pay
-        else:
-            flash("Please ensure that your details are filled out.")
-            return redirect('/user/pending_order/view')
-
     else:
         return redirect("/user/login")
 

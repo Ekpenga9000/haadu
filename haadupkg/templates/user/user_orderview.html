@@ -41,9 +41,16 @@
             </div>
             <div class="mb-3">
                 {% for i in user_deets %}
-                <textarea name="shipping_addy" id="shipping_addy" cols="30" rows="10" class="form-control">
-                {{i.address}}
+                {% if i.address == None or i.address == 'None' or i.stateid == '' or i.stateid == None %}
+                <textarea name="shipping_addy" id="shipping_addy" cols="30" rows="10" class="form-control" required>
+                
                 </textarea>
+
+                {% else %}
+                <textarea name="shipping_addy" id="shipping_addy" cols="30" rows="10" class="form-control">
+                    {{i.address}}
+                </textarea>
+                {% endif %}
             </div>
 
             <div>
@@ -80,9 +87,17 @@
                 <hr>
                 <p><span style="font-weight: bold;">Total:</span>  <span style="font-weight:bold ;" class="orange">&#x20A6;{{"{:,.2f}".format(total)}}</span><span style="font-weight:bold ;" class="visually-hidden">{{total}}</span></p>
             </div>
+            {% for j in user_deets %}
+            {% if j.address != None or j.address != 'None' or j.address != '' or j.userstateview.state_name != None or j.userstateview.state_name != '' %}
             <div class="mb-3">
                 <button class="btn bgorange text-white">Make Payment</button>
             </div>
+            {% else %}
+            <div class="mb-3">
+                <button class="btn bgorange text-white" disabled> Please fill your address and select your state to Make Payment</button>
+            </div>
+            {% endif %}
+            {% endfor %}
         </form>
     </div>
 	{% else %}

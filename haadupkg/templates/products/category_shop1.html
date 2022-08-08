@@ -120,6 +120,11 @@
 		</div>
 		{% include 'products/footer.html'%}
 		<!-- JS Files *best practice is to add your files yourself. For the CDN route, you'll be required to have internet connection. The popper js is in the bundle.js file.*-->
+		<script type="text/javascript" src="{{url_for('static',filename='jquery.3.6.0.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='jquery.3.6.0.min.js')}}"></script>
+		<script src="{{url_for('static',filename='vendor/jquery/jquery.min.js')}}"></script>
+		<script src="{{url_for('static',filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/bootstrap.bundle.js')}}"></script>
 		{% block script%}
 		<script type="text/javascript" language="javascript">
 			

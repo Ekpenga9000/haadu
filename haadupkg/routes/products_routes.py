@@ -59,9 +59,9 @@ def product_category(id):
 
         for pr,ca in prod_cate2:
             prod_cate1 = ca.category_name
-    
-        # # prod_cate1 = Products.query.join(Categories,Products.categoryid==Categories.categoryid).add_columns(Categories).filter(Products.categoryid == id).first()
-        # prod_cate1 = Categories.query.get(id)
+        
+            # # prod_cate1 = Products.query.join(Categories,Products.categoryid==Categories.categoryid).add_columns(Categories).filter(Products.categoryid == id).first()
+            # prod_cate1 = Categories.query.get(id)
 
         carty = []
         cart_n = Cart.query.filter(Cart.userid==log).all()
