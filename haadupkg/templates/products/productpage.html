@@ -17,7 +17,7 @@
 				<div class="col d-md-flex border p-3 mb-3">
 					<div class="">
 						<i class="fa-solid fa-ellipsis d-inline-block me-2 orange"></i>
-						<span class="text-white d-inline-block orange">Catergories >>></span>
+						<span class="text-white d-inline-block orange"><a href="/home" class="text-success">Shop</a>>>>Catergories >>></span>
 					</div>
 					<div class="">
 					
@@ -26,6 +26,18 @@
 					<div class="">
 						
 						<span class="text-white d-inline-block orange">{% block prod %}{%endblock%}</span>
+					</div>
+					<div class="ms-5 d-lg-none">
+						<a class="nav-link orange" href="/user/cart/view" class="d-inline-block">
+							<i class="fa-solid fa-cart-shopping lead"></i>
+							<!-- <i class="fa-solid fa-circle-exclamation"></i> -->
+							<!-- <i class="fa-solid fa-bell"></i> -->
+							<span id="cart" class="badge bgorange text-white p-1 rounded">
+								{{cart_num1}}
+								<!-- <i class="fa-solid fa-circle-exclamation"></i> -->
+								<span class="visually-hidden">Cart</span>
+							</span>
+						</a>
 					</div>
 				</div>	
 			</div>

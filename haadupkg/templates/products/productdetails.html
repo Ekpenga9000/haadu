@@ -2,7 +2,7 @@
 
 {% block cate%}
 {% for i,j in prod_view%}
-{{j.category_name}}
+	<a href="/products/category/{{j.categoryid}}" class="text-success">{{j.category_name}}</a>
 {%endfor%}
 {%endblock%}
 

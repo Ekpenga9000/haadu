@@ -14,7 +14,7 @@
 {%endblock%}
 {% block img %}
 {% for i,j in prod_view %}
-	<img src="{{url_for('static', filename='uploads/'+i.product_img)}}" alt="Chicken" class="img-fluid p-3">
+	<img src="{{url_for('static', filename='uploads/'+i.product_img)}}" alt="{{i.product_name}}" class="img-fluid p-3">
 {%endfor%}
 {%endblock%}
 					
@@ -45,10 +45,10 @@
 				<button id ="subtraction" type="button" class="btn btn-success disabled"><i class="fa-solid fa-minus text-white"></i></button>
 				<input type="hidden" name="{{i.productid}}" value="{{i.productid}}" id="prod">
 				<input type="hidden" name="csrf_token" id="csrf_token" value="{{csrf_token()}}">
-				<span id="number" class="d-inline-block mx-3">{{cart_num}}</span>
+				<span id="number" class="d-inline-block mx-3 shadow">{{cart_num}}</span>
 				<!-- <span id="number" class="d-inline-block mx-3">{{cart_num1}}</span> -->
 				<button id="addition" type="button" class="btn btn-success"><i class="fa-solid fa-plus text-white"></i></button>
-				<button id="add" class="btn bgorange text-white d-inline-block ms-5">
+				<button id="add" class="btn bgorange text-white d-inline-block ms-lg-5 shadow">
 					Update Cart <i class="fa-solid fa-cart-arrow-down text-white"></i>
 				</button>
 			</div>
@@ -58,15 +58,15 @@
 		<div class="modal-footer d-flex justify-content-between">
 		</div>
 	</div>
-	<div class="d-flex justify-content-between">
-	<a href = "{{url_for('shop')}}" class="btn btn-light orange d-inline-block">
-		<i class="fa-solid fa-circle-arrow-left orange"></i>
-		Continue shopping</a>
-		
-	<a href ="/user/cart/view" class="btn bgorange text-white d-inline-block" id="proceed">
-		
-		Proceed to Checkout  <i class="fa-solid fa-cart-arrow-down text-white"></i></a>
-
+	<div class="d-lg-flex justify-content-between">
+			<a href = "{{url_for('shop')}}" class="btn btn-light orange shadow d-block">
+				<i class="fa-solid fa-circle-arrow-left orange"></i>
+				Continue shopping</a>
+			
+			<a href ="/user/cart/view" class="btn bgorange text-white d-block mt-sm-3 mt-md-3 mt-lg-none shadow" id="proceed">
+				
+				Proceed to Checkout  <i class="fa-solid fa-cart-arrow-down text-white"></i></a>
+				
 	</div>
 	<!-- <button type="button" class="btn form-control bgorange" id="add"> 
 		<span class="text-white">ADD TO CART</span>
